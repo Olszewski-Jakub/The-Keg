@@ -5,7 +5,6 @@ import com.trackmybus.config.configureMonitoring
 import com.trackmybus.config.setupConfig
 import com.trackmybus.database.DatabaseFactory
 import com.trackmybus.di.configureKoin
-import com.trackmybus.old.*
 import io.ktor.server.application.*
 import org.koin.ktor.ext.inject
 
