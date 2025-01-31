@@ -27,7 +27,7 @@ jobs:
         if: success() || failure()
         with:
           name: kotlin-test-results
-          path: build/test-results/tests
+          path: build/test-results/tests/
 
   report:
     runs-on: ubuntu-latest
