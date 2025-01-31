@@ -25,3 +25,19 @@ jobs:
           name: kotlin-test-results
           path: build/test-results/test/
 
+  report:
+    runs-on: ubuntu-latest
+    needs: build-test
+    steps:
+      - uses: actions/checkout@v4         # Checkout the repository
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: kotlin-test-results
+
+      - uses: dorny/test-reporter@v1
+        with:
+          artifact: kotlin-test-results
+          name: JEST Tests
+          path: '*.xml'
+          reporter: java-junit
