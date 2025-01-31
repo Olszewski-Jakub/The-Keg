@@ -12,6 +12,7 @@ plugins {
     id("io.ktor.plugin") version "3.0.2"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.0"
     id("org.jetbrains.dokka") version "2.0.0"
+    id("org.jetbrains.kotlinx.kover") version "0.9.1"
 }
 
 group = "com.trackmybus.theKeg"

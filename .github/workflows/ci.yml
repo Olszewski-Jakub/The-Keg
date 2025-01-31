@@ -42,6 +42,33 @@ jobs:
       - uses: dorny/test-reporter@v1
         with:
           artifact: kotlin-test-results
-          name: JUNIT Tests
+          name: Test Report
           path: 'test/*.xml'
           reporter: java-junit
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Generate kover coverage report
+        run: ./gradlew koverXmlReport
+
+      - name: Add coverage report to PR
+        id: kover
+        uses: mi-kas/kover-report@v1
+        with:
+          path: |
+            ${{ github.workspace }}/The-Keg/build/reports/kover/report.xml
+          title: Code Coverage
+          update-comment: true
+          min-coverage-overall: 75
+          min-coverage-changed-files: 75
+          coverage-counter-type: LINE
