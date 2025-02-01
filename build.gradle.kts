@@ -35,9 +35,9 @@ repositories {
     mavenCentral()
 }
 
-tasks.test {
-    jvmArgs = listOf("-Xmx6g")
-}
+//tasks.test {
+//    jvmArgs = listOf("-Xmx6g")
+//}
 
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
