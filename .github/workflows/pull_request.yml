@@ -154,7 +154,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: build/reports/kover/
+          path: build/reports/kover/report.xml
 
   upload_coverage_report:
     name: Upload Coverage Report
@@ -168,12 +168,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage-report
+          path: report.xml
 
       - name: Upload Coverage Report to Kover
         id: kover
         uses: mi-kas/kover-report@v1
         with:
-          path: coverage-report/report.xml
+          path: report.xml
           title: Code Coverage
           update-comment: true
           min-coverage-overall: 75
