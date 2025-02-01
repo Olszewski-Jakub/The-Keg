@@ -8,14 +8,16 @@ permissions:
   pull-requests: write
 
 jobs:
+
   lint:
     name: Lint Code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
       - name: Run Ktlint
         uses: ScaCap/action-ktlint@master
         with:
@@ -23,11 +25,29 @@ jobs:
           reporter: github-pr-review
           baseline: ${{ github.workspace }}/config/ktlint/baseline.xml
 
+  security_checks:
+    name: Security Analysis & Dependency Updates
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: java
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+      - name: Check for Dependency Updates
+        run: ./gradlew dependencyUpdates
+
   build_and_test:
     name: Build and Test
     runs-on: ubuntu-latest
-    needs: lint
-
+    needs: [security_checks]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -37,6 +57,16 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
 
       - name: Grant Execute Permissions for Gradle
         run: chmod +x gradlew
@@ -75,19 +105,16 @@ jobs:
   generate_coverage_report:
     name: Generate Coverage Report
     runs-on: ubuntu-latest
-    needs: lint
+    needs: build_and_test
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v3
 
       - name: Generate Coverage Report
         run: ./gradlew koverXmlReport
@@ -103,3 +130,9 @@ jobs:
           min-coverage-overall: 75
           min-coverage-changed-files: 75
           coverage-counter-type: LINE
+
+      - name: Upload Coverage Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: build/reports/kover/

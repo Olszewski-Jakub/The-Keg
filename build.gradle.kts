@@ -1,3 +1,4 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 val h2Version: String = project.findProperty("h2_version") as String
@@ -16,6 +17,8 @@ plugins {
     id("org.jetbrains.dokka") version "2.0.0"
     id("org.jetbrains.kotlinx.kover") version "0.9.1"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+    id("com.github.ben-manes.versions") version "0.52.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.7"
 }
 
 group = "com.trackmybus.theKeg"
@@ -89,4 +92,17 @@ ktlint {
         exclude("**/idea/**")
         exclude("**/build.gradle.kts") // Exclude build.gradle.kts file
     }
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        isNonStable(candidate.version)
+    }
+}
+
+fun isNonStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable.not()
 }
