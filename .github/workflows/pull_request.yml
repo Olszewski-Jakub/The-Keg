@@ -180,34 +180,34 @@ jobs:
           min-coverage-changed-files: 75
           coverage-counter-type: LINE
 
-    post_summary:
-      name: Post Summary of Checks
-      runs-on: ubuntu-latest
-      permissions:
-        pull-requests: write
-      needs: [ generate_coverage_report, upload_coverage_report ]  # Ensure it runs after these jobs
-      if: always()  # Run regardless of success or failure of the needed jobs
-      steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v4
+  post_summary:
+    name: Post Summary of Checks
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    needs: [ generate_coverage_report, upload_coverage_report ]  # Ensure it runs after these jobs
+    if: always()  # Run regardless of success or failure of the needed jobs
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-        - name: Set up GitHub Script
-          uses: actions/github-script@v6
-          id: get_summary
-          with:
-            script: |
-              const status = await github.rest.checks.listForRef({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                ref: context.sha
-              });
+      - name: Set up GitHub Script
+        uses: actions/github-script@v6
+        id: get_summary
+        with:
+          script: |
+            const status = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha
+            });
 
-              const successfulChecks = status.data.check_runs.filter(check => check.conclusion === 'success').length;
-              const failedChecks = status.data.check_runs.filter(check => check.conclusion === 'failure').length;
-              const totalChecks = status.data.check_runs.length;
+            const successfulChecks = status.data.check_runs.filter(check => check.conclusion === 'success').length;
+            const failedChecks = status.data.check_runs.filter(check => check.conclusion === 'failure').length;
+            const totalChecks = status.data.check_runs.length;
 
-              return `### Summary of Checks\n\n- Total checks: ${totalChecks}\n- Successful checks: ${successfulChecks}\n- Failed checks: ${failedChecks}`;
+            return `### Summary of Checks\n\n- Total checks: ${totalChecks}\n- Successful checks: ${successfulChecks}\n- Failed checks: ${failedChecks}`;
 
-        - uses: mshick/add-pr-comment@v2
-          with:
-            message: ${{ steps.get_summary.outputs.result }}
+      - uses: mshick/add-pr-comment@v2
+        with:
+          message: ${{ steps.get_summary.outputs.result }}
