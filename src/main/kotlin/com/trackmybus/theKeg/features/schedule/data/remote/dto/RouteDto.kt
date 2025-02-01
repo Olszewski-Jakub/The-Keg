@@ -29,5 +29,5 @@ data class RouteDto(
     @SerialName("route_type") val routeType: Int? = null,
     @SerialName("route_url") val routeUrl: String? = null,
     @SerialName("route_color") val routeColor: String? = null,
-    @SerialName("route_text_color") val routeTextColor: String? = null
+    @SerialName("route_text_color") val routeTextColor: String? = null,
 )

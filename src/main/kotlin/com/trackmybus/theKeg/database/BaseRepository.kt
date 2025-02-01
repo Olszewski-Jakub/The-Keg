@@ -7,8 +7,14 @@ import java.sql.Connection
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 
-abstract class BaseRepository(private val connection: Connection) {
-    suspend fun <T> query(@Language("SQL") sql: String, params: List<Any?> = emptyList(), mapper: (ResultSet) -> T): List<T> =
+abstract class BaseRepository(
+    private val connection: Connection,
+) {
+    suspend fun <T> query(
+        @Language("SQL") sql: String,
+        params: List<Any?> = emptyList(),
+        mapper: (ResultSet) -> T,
+    ): List<T> =
         withContext(Dispatchers.IO) {
             connection.prepareStatement(sql).use { statement ->
                 setParameters(statement, params)
@@ -22,15 +28,22 @@ abstract class BaseRepository(private val connection: Connection) {
             }
         }
 
-    suspend fun update(@Language("SQL") sql: String, params: List<Any?> = emptyList()): Int =
+    suspend fun update(
+        @Language("SQL") sql: String,
+        params: List<Any?> = emptyList(),
+    ): Int =
         withContext(Dispatchers.IO) {
-            connection.prepareStatement(sql).use { statement -> // Suppress warning
+            connection.prepareStatement(sql).use { statement ->
+                // Suppress warning
                 setParameters(statement, params)
                 statement.executeUpdate()
             }
         }
 
-    private fun setParameters(statement: PreparedStatement, params: List<Any?>) {
+    private fun setParameters(
+        statement: PreparedStatement,
+        params: List<Any?>,
+    ) {
         params.forEachIndexed { index, param ->
             when (param) {
                 is String -> statement.setString(index + 1, param)

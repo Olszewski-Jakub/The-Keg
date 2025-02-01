@@ -26,5 +26,5 @@ data class StopTimeDto(
     @SerialName("stop_headsign") val stopHeadsign: String? = null,
     @SerialName("pickup_type") val pickupType: Int? = null,
     @SerialName("drop_off_type") val dropOffType: Int? = null,
-    @SerialName("timepoint") val timepoint: Int? = null
+    @SerialName("timepoint") val timepoint: Int? = null,
 )

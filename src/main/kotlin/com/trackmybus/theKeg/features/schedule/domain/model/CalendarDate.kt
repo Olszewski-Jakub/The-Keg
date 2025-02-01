@@ -6,5 +6,5 @@ data class CalendarDate(
     val id: Int,
     val serviceId: String,
     val date: LocalDate,
-    val exceptionType: ScheduleAdjustmentType
+    val exceptionType: ScheduleAdjustmentType,
 )

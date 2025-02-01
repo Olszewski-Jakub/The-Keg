@@ -8,7 +8,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  build-test:
+  build-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4         # Checkout the repository
@@ -31,9 +31,9 @@ jobs:
           name: kotlin-test-results
           path: build/test-results/
 
-  report:
+  test-report:
     runs-on: ubuntu-latest
-    needs: build-test
+    needs: build-tests
     steps:
       - uses: actions/checkout@v4         # Checkout the repository
 
@@ -48,7 +48,7 @@ jobs:
           path: 'test/*.xml'
           reporter: java-junit
 
-  build:
+  generate-coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -74,3 +74,19 @@ jobs:
           min-coverage-overall: 75
           min-coverage-changed-files: 75
           coverage-counter-type: LINE
+
+  ktlint:
+    name: Check Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - name: ktlint
+        uses: ScaCap/action-ktlint@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review # Change reporter
+          baseline: ${{ github.workspace }}/config/ktlint/baseline.xml

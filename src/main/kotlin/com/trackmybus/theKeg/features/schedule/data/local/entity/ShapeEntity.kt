@@ -14,7 +14,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property shapePtSequence The sequence of the shape point.
  * @property shapeDistTraveled The distance traveled for the shape point.
  */
-class ShapeEntity(id: EntityID<Int>): IntEntity(id) {
+class ShapeEntity(
+    id: EntityID<Int>,
+) : IntEntity(id) {
     companion object : IntEntityClass<ShapeEntity>(ShapesTable)
 
     var shapeId by ShapesTable.shapeId

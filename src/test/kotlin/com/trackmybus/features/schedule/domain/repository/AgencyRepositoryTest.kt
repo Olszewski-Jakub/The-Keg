@@ -2,7 +2,6 @@ package com.trackmybus.features.schedule.domain.repository
 
 import com.trackmybus.di.configureKoinUnitTest
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.schedule.domain.mapper.toModel
 import com.trackmybus.theKeg.features.schedule.domain.model.Agency
 import com.trackmybus.theKeg.features.schedule.domain.repository.agency.AgencyRepository
 import kotlinx.coroutines.runBlocking
@@ -18,7 +17,7 @@ import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.get
 
-class AgencyRepositoryTest: KoinTest {
+class AgencyRepositoryTest : KoinTest {
     private lateinit var databaseFactory: DatabaseFactory
     private lateinit var agencyRepository: AgencyRepository
 
@@ -58,13 +57,14 @@ class AgencyRepositoryTest: KoinTest {
     }
 
     @Test
-    fun `Get list of all agencies`() = runBlocking {
-        val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
-        runBlocking { agencyRepository.add(newAgency) }
-        val agencies = agencyRepository.getAll()
-        assertTrue(agencies.isSuccess)
-        assertNotNull(agencies.getOrNull())
-    }
+    fun `Get list of all agencies`() =
+        runBlocking {
+            val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
+            runBlocking { agencyRepository.add(newAgency) }
+            val agencies = agencyRepository.getAll()
+            assertTrue(agencies.isSuccess)
+            assertNotNull(agencies.getOrNull())
+        }
 
     @Test
     fun `Get agency with existing ID`() {
@@ -77,28 +77,31 @@ class AgencyRepositoryTest: KoinTest {
     }
 
     @Test
-    fun `Get agency with ID that does not exist`() = runBlocking {
-        val agency = agencyRepository.getById("-1")
-        assertTrue(agency.isSuccess)
-        assertNull(agency.getOrNull())
-    }
+    fun `Get agency with ID that does not exist`() =
+        runBlocking {
+            val agency = agencyRepository.getById("-1")
+            assertTrue(agency.isSuccess)
+            assertNull(agency.getOrNull())
+        }
 
     @Test
-    fun `Update existing agency`() = runBlocking {
-        val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
-        runBlocking { agencyRepository.add(newAgency) }
-        val updatedAgency = Agency("1", "Updated Agency", "https://updatedagency.com", "UTC")
-        val result = agencyRepository.update(updatedAgency)
-        assertTrue(result.isSuccess)
-        assertTrue(result.getOrNull()!!)
-    }
+    fun `Update existing agency`() =
+        runBlocking {
+            val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
+            runBlocking { agencyRepository.add(newAgency) }
+            val updatedAgency = Agency("1", "Updated Agency", "https://updatedagency.com", "UTC")
+            val result = agencyRepository.update(updatedAgency)
+            assertTrue(result.isSuccess)
+            assertTrue(result.getOrNull()!!)
+        }
 
     @Test
-    fun `Update agency with non-existent ID`() = runBlocking {
-        val updatedAgency = Agency("1", "Updated Agency", "https://updatedagency.com", "UTC")
-        val result = agencyRepository.update(updatedAgency)
-        assertTrue(result.isFailure)
-    }
+    fun `Update agency with non-existent ID`() =
+        runBlocking {
+            val updatedAgency = Agency("1", "Updated Agency", "https://updatedagency.com", "UTC")
+            val result = agencyRepository.update(updatedAgency)
+            assertTrue(result.isFailure)
+        }
 
     @Test
     fun `Delete agency with existing ID`() {
@@ -111,9 +114,10 @@ class AgencyRepositoryTest: KoinTest {
     }
 
     @Test
-    fun `Delete agency with non-existing ID`() = runBlocking {
-        val result = agencyRepository.deleteById("1")
-        assertTrue(result.isSuccess)
-        assertFalse(result.getOrNull()!!)
-    }
+    fun `Delete agency with non-existing ID`() =
+        runBlocking {
+            val result = agencyRepository.deleteById("1")
+            assertTrue(result.isSuccess)
+            assertFalse(result.getOrNull()!!)
+        }
 }

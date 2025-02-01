@@ -27,5 +27,5 @@ data class TripDto(
     @SerialName("trip_short_name") val tripShortName: String? = null,
     @SerialName("direction_id") val directionId: Int? = null,
     @SerialName("block_id") val blockId: String? = null,
-    @SerialName("shape_id") val shapeId: String? = null
+    @SerialName("shape_id") val shapeId: String? = null,
 )

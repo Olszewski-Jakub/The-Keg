@@ -12,7 +12,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property date The date of the calendar entry.
  * @property exceptionType The exception type for the calendar date.
  */
-class CalendarDateEntity(id: EntityID<Int>): IntEntity(id) {
+class CalendarDateEntity(
+    id: EntityID<Int>,
+) : IntEntity(id) {
     companion object : IntEntityClass<CalendarDateEntity>(CalendarDatesTable)
 
     var serviceId by CalendarDatesTable.serviceId

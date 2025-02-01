@@ -1,11 +1,13 @@
-val h2_version: String by project
-val koin_version: String by project
-val kotlin_version: String by project
-val logback_version: String by project
-val postgres_version: String by project
-val csv_serialization_version: String by project
-val exposed_version: String by project
-val hikaricp_version: String by project
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
+val h2Version: String = project.findProperty("h2_version") as String
+val koinVersion: String = project.findProperty("koin_version") as String
+val kotlinVersion: String = project.findProperty("kotlin_version") as String
+val logbackVersion: String = project.findProperty("logback_version") as String
+val postgresVersion: String = project.findProperty("postgres_version") as String
+val csvSerializationVersion: String = project.findProperty("csv_serialization_version") as String
+val exposedVersion: String = project.findProperty("exposed_version") as String
+val hikaricpVersion: String = project.findProperty("hikaricp_version") as String
 
 plugins {
     kotlin("jvm") version "2.1.0"
@@ -13,6 +15,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.1.0"
     id("org.jetbrains.dokka") version "2.0.0"
     id("org.jetbrains.kotlinx.kover") version "0.9.1"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
 }
 
 group = "com.trackmybus.theKeg"
@@ -46,18 +49,44 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     testImplementation("io.ktor:ktor-server-test-host-jvm")
-    implementation("org.postgresql:postgresql:$postgres_version")
-    implementation("com.h2database:h2:$h2_version")
-    implementation("com.zaxxer:HikariCP:$hikaricp_version")
-    implementation("io.insert-koin:koin-ktor:$koin_version")
-    implementation("io.insert-koin:koin-logger-slf4j:$koin_version")
-    implementation("io.insert-koin:koin-test:$koin_version")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    implementation("org.apache.commons:commons-compress:1.26.0")
-    implementation("de.brudaswen.kotlinx.serialization:kotlinx-serialization-csv:$csv_serialization_version")
-    implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
-    implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
-    implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
-    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposed_version")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    // Database dependencies
+    implementation("org.postgresql:postgresql:$postgresVersion")
+    implementation("com.h2database:h2:$h2Version")
+    implementation("com.zaxxer:HikariCP:$hikaricpVersion")
+    // Koin dependencies
+    implementation("io.insert-koin:koin-ktor:$koinVersion")
+    implementation("io.insert-koin:koin-logger-slf4j:$koinVersion")
+    implementation("io.insert-koin:koin-test:$koinVersion")
+    // Logging dependencies
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    // CSV serialization dependencies
+    implementation("de.brudaswen.kotlinx.serialization:kotlinx-serialization-csv:$csvSerializationVersion")
+    // Exposed dependencies
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
+    // Test dependencies
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+}
+
+ktlint {
+    verbose.set(true)
+    outputToConsole.set(true)
+    coloredOutput.set(true)
+    baseline.set(file("config/ktlint/baseline.xml"))
+    reporters {
+        reporter(ReporterType.CHECKSTYLE)
+        reporter(ReporterType.JSON)
+        reporter(ReporterType.HTML)
+    }
+    filter {
+        exclude("**/style-violations.kt")
+        exclude("**/.gradle/**")
+        exclude("**/build/**")
+        exclude("**/.kotlin/**")
+        exclude("**/docs/**")
+        exclude("**/idea/**")
+        exclude("**/build.gradle.kts") // Exclude build.gradle.kts file
+    }
 }

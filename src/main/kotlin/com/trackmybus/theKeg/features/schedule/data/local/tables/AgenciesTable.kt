@@ -9,7 +9,7 @@ object AgenciesTable : IdTable<String>("agencies") {
     val agencyName = varchar("agency_name", 255).nullable()
     val agencyUrl = varchar("agency_url", 255).nullable()
     val agencyTimezone = varchar("agency_timezone", 255).nullable()
-    override val id = varchar("agency_id",255).entityId()
+    override val id = varchar("agency_id", 255).entityId()
     override val primaryKey: PrimaryKey?
         get() = PrimaryKey(id)
 }

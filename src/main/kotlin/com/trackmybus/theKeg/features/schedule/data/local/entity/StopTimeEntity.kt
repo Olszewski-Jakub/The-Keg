@@ -18,7 +18,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property dropOffType The drop-off type at the stop.
  * @property timepoint Indicates if the stop time is a timepoint.
  */
-class StopTimeEntity(id: EntityID<Int>): IntEntity(id) {
+class StopTimeEntity(
+    id: EntityID<Int>,
+) : IntEntity(id) {
     companion object : IntEntityClass<StopTimeEntity>(StopTimesTable)
 
     var tripId by StopTimesTable.tripId

@@ -10,5 +10,5 @@ data class Stop(
     val zoneId: String,
     val stopUrl: String,
     val locationType: Int?,
-    val parentStation: String
+    val parentStation: String,
 )

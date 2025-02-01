@@ -12,5 +12,5 @@ data class StopTime(
     val stopHeadsign: String,
     val pickupType: Int,
     val dropOffType: Int,
-    val timepoint: Int
+    val timepoint: Int,
 )

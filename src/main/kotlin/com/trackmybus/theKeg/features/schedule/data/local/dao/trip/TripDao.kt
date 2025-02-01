@@ -7,7 +7,6 @@ import com.trackmybus.theKeg.features.schedule.domain.model.Trip
  * Data Access Object (DAO) interface for managing trip data in the local database.
  */
 interface TripDao {
-
     /**
      * Retrieves all trips from the local database.
      * @return A [Result] containing a list of [TripEntity] objects.

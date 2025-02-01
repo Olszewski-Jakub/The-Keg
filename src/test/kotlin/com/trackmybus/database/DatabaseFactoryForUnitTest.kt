@@ -9,7 +9,9 @@ import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class DatabaseFactoryForUnitTest(private val scheduleSchemaInitializer: ScheduleSchemaInitializer) : DatabaseFactory {
+class DatabaseFactoryForUnitTest(
+    private val scheduleSchemaInitializer: ScheduleSchemaInitializer,
+) : DatabaseFactory {
     private lateinit var connectionPool: HikariDataSource
 
     override lateinit var database: Database
@@ -28,12 +30,14 @@ class DatabaseFactoryForUnitTest(private val scheduleSchemaInitializer: Schedule
 
     override suspend fun <T> dbQuery(block: suspend () -> T): T = newSuspendedTransaction(Dispatchers.IO) { block() }
 
-    private fun createHikariDataSource() = HikariDataSource(HikariConfig().apply {
-        driverClassName = "org.h2.Driver"
-        jdbcUrl = "jdbc:h2:mem:;DATABASE_TO_UPPER=false;MODE=MYSQL"
-        maximumPoolSize = 2
-        isAutoCommit = true
-        validate()
-    })
-
+    private fun createHikariDataSource() =
+        HikariDataSource(
+            HikariConfig().apply {
+                driverClassName = "org.h2.Driver"
+                jdbcUrl = "jdbc:h2:mem:;DATABASE_TO_UPPER=false;MODE=MYSQL"
+                maximumPoolSize = 2
+                isAutoCommit = true
+                validate()
+            },
+        )
 }

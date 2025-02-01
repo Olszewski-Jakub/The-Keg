@@ -14,11 +14,17 @@ import org.koin.ktor.ext.inject
 @Resource("/schedule")
 class Schedule {
     @Resource("/update")
-    class Update(val parent: Schedule = Schedule()) {
+    class Update(
+        val parent: Schedule = Schedule(),
+    ) {
         @Resource("/gtfs")
-        class Gtfs(val parent: Update = Update()) {
+        class Gtfs(
+            val parent: Update = Update(),
+        ) {
             @Resource("/tfi")
-            class Tfi(val parent: Gtfs = Gtfs())
+            class Tfi(
+                val parent: Gtfs = Gtfs(),
+            )
         }
     }
 }
@@ -42,7 +48,7 @@ fun Route.updateTfiScheduleRoute() {
                 statusCode = HttpStatusCode.InternalServerError,
                 errorCode = 500,
                 message = "Failed to fetch GTFS data",
-                details = it.message
+                details = it.message,
             )
         }
     }

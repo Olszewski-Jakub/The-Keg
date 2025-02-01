@@ -58,13 +58,14 @@ class AgenciesDaoTest : KoinTest {
     }
 
     @Test
-    fun `Get list of all agencies`() = runBlocking {
-        val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
-        runBlocking { agenciesDao.addAgency(newAgency) }
-        val agencies = agenciesDao.getAllAgencies()
-        assertTrue(agencies.isSuccess)
-        assertNotNull(agencies.getOrNull())
-    }
+    fun `Get list of all agencies`() =
+        runBlocking {
+            val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
+            runBlocking { agenciesDao.addAgency(newAgency) }
+            val agencies = agenciesDao.getAllAgencies()
+            assertTrue(agencies.isSuccess)
+            assertNotNull(agencies.getOrNull())
+        }
 
     @Test
     fun `Get agency with existing ID`() {
@@ -77,28 +78,31 @@ class AgenciesDaoTest : KoinTest {
     }
 
     @Test
-    fun `Get agency with ID that does not exist`() = runBlocking {
-        val agency = agenciesDao.getAgencyById("1")
-        assertTrue(agency.isSuccess)
-        assertNull(agency.getOrNull())
-    }
+    fun `Get agency with ID that does not exist`() =
+        runBlocking {
+            val agency = agenciesDao.getAgencyById("1")
+            assertTrue(agency.isSuccess)
+            assertNull(agency.getOrNull())
+        }
 
     @Test
-    fun `Update existing agency`() = runBlocking {
-        val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
-        runBlocking { agenciesDao.addAgency(newAgency) }
-        val updatedAgency = Agency("1", "Updated Agency", "https://updatedagency.com", "UTC")
-        val result = agenciesDao.updateAgency(updatedAgency)
-        assertTrue(result.isSuccess)
-        assertTrue(result.getOrNull()!!)
-    }
+    fun `Update existing agency`() =
+        runBlocking {
+            val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
+            runBlocking { agenciesDao.addAgency(newAgency) }
+            val updatedAgency = Agency("1", "Updated Agency", "https://updatedagency.com", "UTC")
+            val result = agenciesDao.updateAgency(updatedAgency)
+            assertTrue(result.isSuccess)
+            assertTrue(result.getOrNull()!!)
+        }
 
     @Test
-    fun `Update agency with non-existent ID`() = runBlocking {
-        val updatedAgency = Agency("1", "Updated Agency", "https://updatedagency.com", "UTC")
-        val result = agenciesDao.updateAgency(updatedAgency)
-        assertTrue(result.isFailure)
-    }
+    fun `Update agency with non-existent ID`() =
+        runBlocking {
+            val updatedAgency = Agency("1", "Updated Agency", "https://updatedagency.com", "UTC")
+            val result = agenciesDao.updateAgency(updatedAgency)
+            assertTrue(result.isFailure)
+        }
 
     @Test
     fun `Delete agency with existing ID`() {
@@ -111,9 +115,10 @@ class AgenciesDaoTest : KoinTest {
     }
 
     @Test
-    fun `Delete agency with non-existing ID`() = runBlocking {
-        val result = agenciesDao.deleteAgency("1")
-        assertTrue(result.isSuccess)
-        assertFalse(result.getOrNull()!!)
-    }
+    fun `Delete agency with non-existing ID`() =
+        runBlocking {
+            val result = agenciesDao.deleteAgency("1")
+            assertTrue(result.isSuccess)
+            assertFalse(result.getOrNull()!!)
+        }
 }

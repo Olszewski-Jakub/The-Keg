@@ -31,19 +31,20 @@ class GtfsScheduleServiceTest : KoinTest {
     }
 
     @Test
-    fun `Fetch GTFS and check if fields are not empty`() = runBlocking(Dispatchers.IO) {
-        val result = gtfsScheduleService.fetchGtfsData()
-        assertTrue(result.isSuccess)
-        val gtfsDto = result.getOrNull()
-        assertNotNull(gtfsDto)
-        assertFalse(gtfsDto.agencyDto.isEmpty())
-        assertFalse(gtfsDto.calendarDto.isEmpty())
-        assertFalse(gtfsDto.calendarDatesDto.isEmpty())
-        assertFalse(gtfsDto.routesDto.isEmpty())
-        assertFalse(gtfsDto.shapesDto.isEmpty())
-        assertFalse(gtfsDto.stopsDto.isEmpty())
-        assertFalse(gtfsDto.stopTimesDto.isEmpty())
-        assertFalse(gtfsDto.tripsDto.isEmpty())
-        assertFalse(gtfsDto.feedInfoDto.isEmpty())
-    }
+    fun `Fetch GTFS and check if fields are not empty`() =
+        runBlocking(Dispatchers.IO) {
+            val result = gtfsScheduleService.fetchGtfsData()
+            assertTrue(result.isSuccess)
+            val gtfsDto = result.getOrNull()
+            assertNotNull(gtfsDto)
+            assertFalse(gtfsDto.agencyDto.isEmpty())
+            assertFalse(gtfsDto.calendarDto.isEmpty())
+            assertFalse(gtfsDto.calendarDatesDto.isEmpty())
+            assertFalse(gtfsDto.routesDto.isEmpty())
+            assertFalse(gtfsDto.shapesDto.isEmpty())
+            assertFalse(gtfsDto.stopsDto.isEmpty())
+            assertFalse(gtfsDto.stopTimesDto.isEmpty())
+            assertFalse(gtfsDto.tripsDto.isEmpty())
+            assertFalse(gtfsDto.feedInfoDto.isEmpty())
+        }
 }

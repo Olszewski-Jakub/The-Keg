@@ -7,7 +7,6 @@ import com.trackmybus.theKeg.features.schedule.domain.model.FeedInfo
  * Data Access Object (DAO) interface for managing feed information data in the local database.
  */
 interface FeedInfoDao {
-
     /**
      * Retrieves all feed information from the local database.
      * @return A [Result] containing a list of [FeedInfoEntity] objects.

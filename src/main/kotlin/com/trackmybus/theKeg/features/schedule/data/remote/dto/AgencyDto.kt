@@ -21,5 +21,5 @@ data class AgencyDto(
     @SerialName("agency_id") val agencyId: String? = null,
     @SerialName("agency_name") val agencyName: String? = null,
     @SerialName("agency_url") val agencyUrl: String? = null,
-    @SerialName("agency_timezone") val agencyTimezone: String? = null
+    @SerialName("agency_timezone") val agencyTimezone: String? = null,
 )

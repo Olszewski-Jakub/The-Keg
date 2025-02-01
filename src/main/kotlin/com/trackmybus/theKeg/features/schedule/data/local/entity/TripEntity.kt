@@ -6,7 +6,7 @@ import org.jetbrains.exposed.dao.EntityClass
 import org.jetbrains.exposed.dao.id.EntityID
 
 /**
- * Entity class representing a trip in the local database.
+ * Entity class representing a trip to the local database.
  * @param id The ID of the trip.
  * @property routeId The ID of the route associated with the trip.
  * @property serviceId The ID of the service associated with the trip.
@@ -17,7 +17,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property blockId The block ID of the trip.
  * @property shapeId The shape ID of the trip.
  */
-class TripEntity(id: EntityID<String>): Entity<String>(id) {
+class TripEntity(
+    id: EntityID<String>,
+) : Entity<String>(id) {
     companion object : EntityClass<String, TripEntity>(TripsTable)
 
     var routeId by TripsTable.routeId

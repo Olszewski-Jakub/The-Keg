@@ -13,7 +13,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property agencyUrl The URL of the agency.
  * @property agencyTimezone The timezone of the agency.
  */
-class AgencyEntity(id: EntityID<String>) : Entity<String>(id) {
+class AgencyEntity(
+    id: EntityID<String>,
+) : Entity<String>(id) {
     companion object : EntityClass<String, AgencyEntity>(AgenciesTable)
 
     var agencyId by AgenciesTable.id

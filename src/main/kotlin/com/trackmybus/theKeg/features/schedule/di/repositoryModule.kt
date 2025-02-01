@@ -21,14 +21,15 @@ import com.trackmybus.theKeg.features.schedule.domain.repository.trip.TripReposi
 import com.trackmybus.theKeg.features.schedule.domain.repository.trip.TripRepositoryImpl
 import org.koin.dsl.module
 
-val repositoryModule = module {
-    single<AgencyRepository> { AgencyRepositoryImpl(getLogger<AgencyRepositoryImpl>(), get()) }
-    single<CalendarRepository> { CalendarRepositoryImpl(getLogger<CalendarRepositoryImpl>(), get()) }
-    single<CalendarDateRepository> { CalendarDateRepositoryImpl(getLogger<CalendarDateRepositoryImpl>(), get()) }
-    single<GtfsScheduleRepository> { GtfsScheduleRepositoryImpl(getLogger<GtfsScheduleRepositoryImpl>(), get()) }
-    single<RouteRepository> { RouteRepositoryImpl(getLogger<RouteRepositoryImpl>(), get()) }
-    single<ShapeRepository> { ShapeRepositoryImpl(getLogger<ShapeRepositoryImpl>(), get()) }
-    single<StopRepository> { StopRepositoryImpl(getLogger<StopRepositoryImpl>(), get()) }
-    single<StopTimeRepository> { StopTimeRepositoryImpl(getLogger<StopTimeRepositoryImpl>(), get()) }
-    single<TripRepository> { TripRepositoryImpl(getLogger<TripRepositoryImpl>(), get()) }
-}
+val repositoryModule =
+    module {
+        single<AgencyRepository> { AgencyRepositoryImpl(getLogger<AgencyRepositoryImpl>(), get()) }
+        single<CalendarRepository> { CalendarRepositoryImpl(getLogger<CalendarRepositoryImpl>(), get()) }
+        single<CalendarDateRepository> { CalendarDateRepositoryImpl(getLogger<CalendarDateRepositoryImpl>(), get()) }
+        single<GtfsScheduleRepository> { GtfsScheduleRepositoryImpl(getLogger<GtfsScheduleRepositoryImpl>(), get()) }
+        single<RouteRepository> { RouteRepositoryImpl(getLogger<RouteRepositoryImpl>(), get()) }
+        single<ShapeRepository> { ShapeRepositoryImpl(getLogger<ShapeRepositoryImpl>(), get()) }
+        single<StopRepository> { StopRepositoryImpl(getLogger<StopRepositoryImpl>(), get()) }
+        single<StopTimeRepository> { StopTimeRepositoryImpl(getLogger<StopTimeRepositoryImpl>(), get()) }
+        single<TripRepository> { TripRepositoryImpl(getLogger<TripRepositoryImpl>(), get()) }
+    }

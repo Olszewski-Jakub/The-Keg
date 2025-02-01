@@ -12,5 +12,5 @@ data class Calendar(
     val saturday: Boolean,
     val sunday: Boolean,
     val startDate: LocalDate,
-    val endDate: LocalDate
+    val endDate: LocalDate,
 )

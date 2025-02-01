@@ -7,7 +7,6 @@ import com.trackmybus.theKeg.features.schedule.domain.model.Shape
  * Data Access Object (DAO) interface for managing shape data in the local database.
  */
 interface ShapeDao {
-
     /**
      * Retrieves all shapes from the local database.
      * @return A [Result] containing a list of [ShapeEntity] objects.
