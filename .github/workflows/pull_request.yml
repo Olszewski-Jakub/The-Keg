@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java' ]
+        language: [ 'java-kotlin' ]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
