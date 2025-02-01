@@ -167,47 +167,15 @@ jobs:
       - name: Download Coverage Report Artifact
         uses: actions/download-artifact@v4
         with:
-          name: coverage-report/report.xml
+          name: coverage-report
 
       - name: Upload Coverage Report to Kover
         id: kover
         uses: mi-kas/kover-report@v1
         with:
-          path: coverage-report
+          path: coverage-report/report.xml
           title: Code Coverage
           update-comment: true
           min-coverage-overall: 75
           min-coverage-changed-files: 75
           coverage-counter-type: LINE
-
-  post_summary:
-    name: Post Summary of Checks
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    needs: [ upload_test_report, upload_coverage_report ]
-    if: always()
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up GitHub Script
-        uses: actions/github-script@v6
-        id: get_summary
-        with:
-          script: |
-            const status = await github.rest.checks.listForRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: context.sha
-            });
-
-            const successfulChecks = status.data.check_runs.filter(check => check.conclusion === 'success').length;
-            const failedChecks = status.data.check_runs.filter(check => check.conclusion === 'failure').length;
-            const totalChecks = status.data.check_runs.length;
-
-            return `### Summary of Checks\n\n- Total checks: ${totalChecks}\n- Successful checks: ${successfulChecks}\n- Failed checks: ${failedChecks}`;
-
-      - uses: mshick/add-pr-comment@v2
-        with:
-          message: ${{ steps.get_summary.outputs.result }}

@@ -73,7 +73,10 @@ class GtfsScheduleServiceImpl(
                     ZipInputStream(bis).use { zis ->
                         var entry: ZipEntry? = zis.nextEntry
                         while (entry != null) {
-                            val outputFile = File(appConfig.gtfsConfig.outputDir, entry.name)
+                            val outputFile = File(appConfig.gtfsConfig.outputDir, entry.name).toPath().normalize().toFile()
+                            if (!outputFile.toPath().startsWith(File(appConfig.gtfsConfig.outputDir).toPath())) {
+                                throw Exception("Bad zip entry: ${entry.name}")
+                            }
                             if (entry.isDirectory) {
                                 outputFile.mkdirs()
                             } else {
