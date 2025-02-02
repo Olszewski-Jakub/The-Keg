@@ -6,10 +6,14 @@ import com.trackmybus.theKeg.features.schedule.domain.model.Route
 import com.trackmybus.theKeg.infrastructure.mappers.ResultMapper.mapResult
 import io.ktor.util.logging.Logger
 
-class RouteRepositoryImpl(private val logger: Logger, private val routeDao: RouteDao ): RouteRepository {
+class RouteRepositoryImpl(
+    private val logger: Logger,
+    private val routeDao: RouteDao,
+) : RouteRepository {
     override suspend fun getAll(): Result<List<Route>> {
         logger.info("Fetching all routes")
-        return routeDao.getAllRoutes()
+        return routeDao
+            .getAllRoutes()
             .mapResult { it.map { routeEntity -> routeEntity.toModel() } }
             .also { result ->
                 result.onSuccess { logger.info("Successfully fetched all routes") }
@@ -19,7 +23,8 @@ class RouteRepositoryImpl(private val logger: Logger, private val routeDao: Rout
 
     override suspend fun getById(id: String): Result<Route?> {
         logger.info("Fetching route with id: $id")
-        return routeDao.getRouteById(id)
+        return routeDao
+            .getRouteById(id)
             .mapResult { it?.toModel() }
             .also { result ->
                 result.onSuccess { logger.info("Successfully fetched route with id: $id") }
@@ -29,7 +34,8 @@ class RouteRepositoryImpl(private val logger: Logger, private val routeDao: Rout
 
     override suspend fun add(calendar: Route): Result<Route> {
         logger.info("Adding route: ${calendar.routeId}")
-        return routeDao.addRoute(calendar)
+        return routeDao
+            .addRoute(calendar)
             .mapResult { it.toModel() }
             .also { result ->
                 result.onSuccess { logger.info("Successfully added route: ${calendar.routeId}") }
@@ -39,7 +45,8 @@ class RouteRepositoryImpl(private val logger: Logger, private val routeDao: Rout
 
     override suspend fun update(calendar: Route): Result<Boolean> {
         logger.info("Updating route: ${calendar.routeId}")
-        return routeDao.updateRoute(calendar)
+        return routeDao
+            .updateRoute(calendar)
             .mapResult { it }
             .also { result ->
                 result.onSuccess { logger.info("Successfully updated route: ${calendar.routeId}") }
@@ -49,7 +56,8 @@ class RouteRepositoryImpl(private val logger: Logger, private val routeDao: Rout
 
     override suspend fun deleteById(id: String): Result<Boolean> {
         logger.info("Deleting route with id: $id")
-        return routeDao.deleteRoute(id)
+        return routeDao
+            .deleteRoute(id)
             .mapResult { it }
             .also { result ->
                 result.onSuccess { logger.info("Successfully deleted route with id: $id") }

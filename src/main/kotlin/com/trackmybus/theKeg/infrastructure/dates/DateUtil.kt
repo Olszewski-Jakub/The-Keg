@@ -2,9 +2,7 @@ package com.trackmybus.theKeg.infrastructure.dates
 
 import kotlinx.datetime.*
 
-
 object DateUtil {
-
     /**
      * Convert a UTC date-time string to a local date-time in the specified timezone.
      *
@@ -15,7 +13,7 @@ object DateUtil {
     fun convertUTCToLocal(
         utcDateTime: String,
         targetTimeZone: String,
-        pattern: String = "yyyy-MM-dd HH:mm:ss"
+        pattern: String = "yyyy-MM-dd HH:mm:ss",
     ): String {
         val utcInstant = Instant.parse(utcDateTime)
         val zoneId = TimeZone.of(targetTimeZone)
@@ -34,7 +32,7 @@ object DateUtil {
     fun convertLocalToUTC(
         localDateTime: String,
         sourceTimeZone: String,
-        pattern: String = "yyyy-MM-dd HH:mm:ss"
+        pattern: String = "yyyy-MM-dd HH:mm:ss",
     ): String {
         val zoneId = TimeZone.of(sourceTimeZone)
         val localDateTimeObj = LocalDateTime.parse(localDateTime)
@@ -63,7 +61,7 @@ object DateUtil {
      */
     fun getCurrentDateTimeInTimeZone(
         targetTimeZone: String,
-        pattern: String = "yyyy-MM-dd HH:mm:ss"
+        pattern: String = "yyyy-MM-dd HH:mm:ss",
     ): String {
         val zoneId = TimeZone.of(targetTimeZone)
         val currentDateTime = Clock.System.now().toLocalDateTime(zoneId)
@@ -92,14 +90,15 @@ object DateUtil {
      *
      * @return Int representing the date in YYYYmmDD format
      */
-    fun LocalDate.toIntDate(): Int {
-        return this.year * 10000 + this.monthNumber * 100 + this.dayOfMonth
-    }
+    fun LocalDate.toIntDate(): Int = this.year * 10000 + this.monthNumber * 100 + this.dayOfMonth
 
     /**
      * Format the LocalDateTime into a string using the provided pattern.
      */
-    private fun formatDateTime(localDateTime: LocalDateTime, pattern: String): String {
+    private fun formatDateTime(
+        localDateTime: LocalDateTime,
+        pattern: String,
+    ): String {
         return localDateTime.toString() // You can create a custom formatting extension if required.
     }
 
@@ -117,7 +116,5 @@ object DateUtil {
         return LocalTime(adjustedHour, minute, second)
     }
 
-    fun LocalTime.toFormattedString(): String {
-        return "%02d:%02d:%02d".format(this.hour, this.minute, this.second)
-    }
+    fun LocalTime.toFormattedString(): String = "%02d:%02d:%02d".format(this.hour, this.minute, this.second)
 }

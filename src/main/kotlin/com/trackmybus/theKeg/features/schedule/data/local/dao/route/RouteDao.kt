@@ -7,7 +7,6 @@ import com.trackmybus.theKeg.features.schedule.domain.model.Route
  * Data Access Object (DAO) interface for managing route data in the local database.
  */
 interface RouteDao {
-
     /**
      * Retrieves all routes from the local database.
      * @return A [Result] containing a list of [RouteEntity] objects.

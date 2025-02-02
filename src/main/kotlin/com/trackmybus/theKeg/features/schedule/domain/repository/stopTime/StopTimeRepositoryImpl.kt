@@ -6,10 +6,14 @@ import com.trackmybus.theKeg.features.schedule.domain.model.StopTime
 import com.trackmybus.theKeg.infrastructure.mappers.ResultMapper.mapResult
 import io.ktor.util.logging.Logger
 
-class StopTimeRepositoryImpl(private val logger: Logger, private val stopTimeDao: StopTimeDao): StopTimeRepository {
+class StopTimeRepositoryImpl(
+    private val logger: Logger,
+    private val stopTimeDao: StopTimeDao,
+) : StopTimeRepository {
     override suspend fun getAll(): Result<List<StopTime>> {
         logger.info("Fetching all stop times")
-        return stopTimeDao.getAllStopTimes()
+        return stopTimeDao
+            .getAllStopTimes()
             .mapResult { it.map { stopTimeEntity -> stopTimeEntity.toModel() } }
             .also { result ->
                 result.onSuccess { logger.info("Successfully fetched all stop times") }
@@ -19,7 +23,8 @@ class StopTimeRepositoryImpl(private val logger: Logger, private val stopTimeDao
 
     override suspend fun getById(id: Int): Result<StopTime?> {
         logger.info("Fetching stop time with id: $id")
-        return stopTimeDao.getStopTimeById(id)
+        return stopTimeDao
+            .getStopTimeById(id)
             .mapResult { it?.toModel() }
             .also { result ->
                 result.onSuccess { logger.info("Successfully fetched stop time with id: $id") }
@@ -29,7 +34,8 @@ class StopTimeRepositoryImpl(private val logger: Logger, private val stopTimeDao
 
     override suspend fun add(calendar: StopTime): Result<StopTime> {
         logger.info("Adding stop time: ${calendar.stopId}")
-        return stopTimeDao.addStopTime(calendar)
+        return stopTimeDao
+            .addStopTime(calendar)
             .mapResult { it.toModel() }
             .also { result ->
                 result.onSuccess { logger.info("Successfully added stop time: ${calendar.stopId}") }
@@ -39,7 +45,8 @@ class StopTimeRepositoryImpl(private val logger: Logger, private val stopTimeDao
 
     override suspend fun update(calendar: StopTime): Result<Boolean> {
         logger.info("Updating stop time: ${calendar.stopId}")
-        return stopTimeDao.updateStopTime(calendar)
+        return stopTimeDao
+            .updateStopTime(calendar)
             .mapResult { it }
             .also { result ->
                 result.onSuccess { logger.info("Successfully updated stop time: ${calendar.stopId}") }
@@ -49,7 +56,8 @@ class StopTimeRepositoryImpl(private val logger: Logger, private val stopTimeDao
 
     override suspend fun deleteById(id: Int): Result<Boolean> {
         logger.info("Deleting stop time with id: $id")
-        return stopTimeDao.deleteStopTime(id)
+        return stopTimeDao
+            .deleteStopTime(id)
             .mapResult { it }
             .also { result ->
                 result.onSuccess { logger.info("Successfully deleted stop time with id: $id") }

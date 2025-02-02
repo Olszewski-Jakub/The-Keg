@@ -1,8 +1,9 @@
 package com.trackmybus.theKeg.core.api
 
-import io.ktor.http.*
-import io.ktor.server.application.*
-import io.ktor.server.response.*
+import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.ApplicationCall
+import io.ktor.server.response.respondText
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -14,11 +15,11 @@ suspend fun ApplicationCall.respondError(
     statusCode: HttpStatusCode,
     errorCode: Int,
     message: String,
-    details: String? = null
+    details: String? = null,
 ) {
     respondText(
         text = Json.encodeToString(ApiResponse.Error(errorCode, message, details)),
         contentType = ContentType.Application.Json,
-        status = statusCode
+        status = statusCode,
     )
 }

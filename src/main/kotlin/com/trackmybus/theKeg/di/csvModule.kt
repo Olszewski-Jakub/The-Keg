@@ -6,15 +6,16 @@ import kotlinx.serialization.csv.Csv
 import org.koin.dsl.module
 
 @OptIn(ExperimentalSerializationApi::class)
-val csvModule = module {
-    single {
-        Csv {
-            hasHeaderRecord = true
-            ignoreUnknownColumns = true
-            delimiter = ','
-            hasTrailingDelimiter = true
+val csvModule =
+    module {
+        single {
+            Csv {
+                hasHeaderRecord = true
+                ignoreUnknownColumns = true
+                delimiter = ','
+                hasTrailingDelimiter = true
+            }
         }
-    }
 
-    single { CsvSerializer(get()) }
-}
+        single { CsvSerializer(get()) }
+    }

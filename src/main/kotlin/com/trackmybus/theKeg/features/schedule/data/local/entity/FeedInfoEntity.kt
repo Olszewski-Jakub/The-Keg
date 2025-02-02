@@ -16,7 +16,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property feedEndDate The end date of the feed.
  * @property feedVersion The version of the feed.
  */
-class FeedInfoEntity(id: EntityID<Int>) : IntEntity(id) {
+class FeedInfoEntity(
+    id: EntityID<Int>,
+) : IntEntity(id) {
     companion object : IntEntityClass<FeedInfoEntity>(FeedInfoTable)
 
     var feedPublisherName: String? by FeedInfoTable.feedPublisherName

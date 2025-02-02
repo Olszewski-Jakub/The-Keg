@@ -9,5 +9,5 @@ data class GTFS(
     val stops: List<Stop>,
     val stopTimes: List<StopTime>,
     val trips: List<Trip>,
-    val feedInfo: List<FeedInfo>
+    val feedInfo: List<FeedInfo>,
 )

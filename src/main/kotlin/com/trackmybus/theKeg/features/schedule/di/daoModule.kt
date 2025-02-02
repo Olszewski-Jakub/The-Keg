@@ -21,15 +21,16 @@ import com.trackmybus.theKeg.features.schedule.data.local.dao.trip.TripDao
 import com.trackmybus.theKeg.features.schedule.data.local.dao.trip.TripDaoImpl
 import org.koin.dsl.module
 
-val daoModule = module {
-    single<AgenciesDao> { AgenciesDaoImpl(getLogger<AgenciesDao>(), get()) }
-    single<CalendarDao> { CalendarDaoImpl(getLogger<CalendarDao>(), get()) }
-    single<CalendarDatesDao> { CalendarDatesDaoImpl(getLogger<CalendarDatesDao>(), get()) }
-    single<FeedInfoDao> { FeedInfoDaoImpl(getLogger<FeedInfoDao>(), get()) }
-    single<ShapeDao> { ShapeDaoImpl(getLogger<ShapeDao>(), get()) }
-    single<RouteDao> { RouteDaoImpl(getLogger<RouteDao>(), get()) }
-    single<ShapeDao> { ShapeDaoImpl(getLogger<ShapeDao>(), get()) }
-    single<StopDao> { StopDaoImpl(getLogger<StopDao>(), get()) }
-    single<StopTimeDao> { StopTimeDaoImpl(getLogger<StopTimeDao>(), get()) }
-    single<TripDao> { TripDaoImpl(getLogger<TripDao>(), get()) }
-}
+val daoModule =
+    module {
+        single<AgenciesDao> { AgenciesDaoImpl(getLogger<AgenciesDao>(), get()) }
+        single<CalendarDao> { CalendarDaoImpl(getLogger<CalendarDao>(), get()) }
+        single<CalendarDatesDao> { CalendarDatesDaoImpl(getLogger<CalendarDatesDao>(), get()) }
+        single<FeedInfoDao> { FeedInfoDaoImpl(getLogger<FeedInfoDao>(), get()) }
+        single<ShapeDao> { ShapeDaoImpl(getLogger<ShapeDao>(), get()) }
+        single<RouteDao> { RouteDaoImpl(getLogger<RouteDao>(), get()) }
+        single<ShapeDao> { ShapeDaoImpl(getLogger<ShapeDao>(), get()) }
+        single<StopDao> { StopDaoImpl(getLogger<StopDao>(), get()) }
+        single<StopTimeDao> { StopTimeDaoImpl(getLogger<StopTimeDao>(), get()) }
+        single<TripDao> { TripDaoImpl(getLogger<TripDao>(), get()) }
+    }

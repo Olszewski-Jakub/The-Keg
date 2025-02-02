@@ -18,5 +18,5 @@ import kotlinx.serialization.Serializable
 data class CalendarDateDto(
     @SerialName("service_id") val serviceId: String? = null,
     @SerialName("date") val date: Int? = null,
-    @SerialName("exception_type") val exceptionType: Int? = null
+    @SerialName("exception_type") val exceptionType: Int? = null,
 )

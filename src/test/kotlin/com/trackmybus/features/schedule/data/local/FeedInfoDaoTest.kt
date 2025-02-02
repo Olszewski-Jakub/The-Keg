@@ -39,7 +39,8 @@ class FeedInfoDaoTest : KoinTest {
 
     @Test
     fun `Add new feed info`() {
-        val newFeedInfo = FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
+        val newFeedInfo =
+            FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
         runBlocking { feedInfoDao.addFeedInfo(newFeedInfo) }.run {
             assertTrue(this.isSuccess)
             assertNotNull(this.getOrNull())
@@ -48,17 +49,20 @@ class FeedInfoDaoTest : KoinTest {
     }
 
     @Test
-    fun `Get list of all feed info`() = runBlocking {
-        val newFeedInfo = FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
-        runBlocking { feedInfoDao.addFeedInfo(newFeedInfo) }
-        val feedInfos = feedInfoDao.getAllFeedInfo()
-        assertTrue(feedInfos.isSuccess)
-        assertNotNull(feedInfos.getOrNull())
-    }
+    fun `Get list of all feed info`() =
+        runBlocking {
+            val newFeedInfo =
+                FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
+            runBlocking { feedInfoDao.addFeedInfo(newFeedInfo) }
+            val feedInfos = feedInfoDao.getAllFeedInfo()
+            assertTrue(feedInfos.isSuccess)
+            assertNotNull(feedInfos.getOrNull())
+        }
 
     @Test
     fun `Get feed info with existing ID`() {
-        val newFeedInfo = FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
+        val newFeedInfo =
+            FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
         runBlocking { feedInfoDao.addFeedInfo(newFeedInfo) }
         runBlocking { feedInfoDao.getFeedInfoById(1) }.run {
             assertTrue(this.isSuccess)
@@ -67,32 +71,55 @@ class FeedInfoDaoTest : KoinTest {
     }
 
     @Test
-    fun `Get feed info with ID that does not exist`() = runBlocking {
-        val feedInfo = feedInfoDao.getFeedInfoById(-1)
-        assertTrue(feedInfo.isSuccess)
-        assertNull(feedInfo.getOrNull())
-    }
+    fun `Get feed info with ID that does not exist`() =
+        runBlocking {
+            val feedInfo = feedInfoDao.getFeedInfoById(-1)
+            assertTrue(feedInfo.isSuccess)
+            assertNull(feedInfo.getOrNull())
+        }
 
     @Test
-    fun `Update existing feed info`() = runBlocking {
-        val newFeedInfo = FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
-        runBlocking { feedInfoDao.addFeedInfo(newFeedInfo) }
-        val updatedFeedInfo = FeedInfo(1, "Updated Publisher", "https://updatedpublisher.com", "en", LocalDate(2024, 1, 1), LocalDate(2024, 12, 31), "2.0")
-        val result = feedInfoDao.updateFeedInfo(updatedFeedInfo)
-        assertTrue(result.isSuccess)
-        assertTrue(result.getOrNull()!!)
-    }
+    fun `Update existing feed info`() =
+        runBlocking {
+            val newFeedInfo =
+                FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
+            runBlocking { feedInfoDao.addFeedInfo(newFeedInfo) }
+            val updatedFeedInfo =
+                FeedInfo(
+                    1,
+                    "Updated Publisher",
+                    "https://updatedpublisher.com",
+                    "en",
+                    LocalDate(2024, 1, 1),
+                    LocalDate(2024, 12, 31),
+                    "2.0",
+                )
+            val result = feedInfoDao.updateFeedInfo(updatedFeedInfo)
+            assertTrue(result.isSuccess)
+            assertTrue(result.getOrNull()!!)
+        }
 
     @Test
-    fun `Update feed info with non-existent ID`() = runBlocking {
-        val updatedFeedInfo = FeedInfo(1, "Updated Publisher", "https://updatedpublisher.com", "en", LocalDate(2024, 1, 1), LocalDate(2024, 12, 31), "2.0")
-        val result = feedInfoDao.updateFeedInfo(updatedFeedInfo)
-        assertTrue(result.isFailure)
-    }
+    fun `Update feed info with non-existent ID`() =
+        runBlocking {
+            val updatedFeedInfo =
+                FeedInfo(
+                    1,
+                    "Updated Publisher",
+                    "https://updatedpublisher.com",
+                    "en",
+                    LocalDate(2024, 1, 1),
+                    LocalDate(2024, 12, 31),
+                    "2.0",
+                )
+            val result = feedInfoDao.updateFeedInfo(updatedFeedInfo)
+            assertTrue(result.isFailure)
+        }
 
     @Test
     fun `Delete feed info with existing ID`() {
-        val newFeedInfo = FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
+        val newFeedInfo =
+            FeedInfo(1, "Feed Publisher", "https://feedpublisher.com", "en", LocalDate(2023, 1, 1), LocalDate(2023, 12, 31), "1.0")
         runBlocking { feedInfoDao.addFeedInfo(newFeedInfo) }
         runBlocking { feedInfoDao.deleteFeedInfo(1) }.run {
             assertTrue(isSuccess)
@@ -101,10 +128,10 @@ class FeedInfoDaoTest : KoinTest {
     }
 
     @Test
-    fun `Delete feed info with non-existing ID`() = runBlocking {
-        val result = feedInfoDao.deleteFeedInfo(1)
-        assertTrue(result.isSuccess)
-        assertFalse(result.getOrNull()!!)
-    }
-
+    fun `Delete feed info with non-existing ID`() =
+        runBlocking {
+            val result = feedInfoDao.deleteFeedInfo(1)
+            assertTrue(result.isSuccess)
+            assertFalse(result.getOrNull()!!)
+        }
 }

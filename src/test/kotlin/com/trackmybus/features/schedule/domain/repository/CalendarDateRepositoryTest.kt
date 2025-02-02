@@ -16,9 +16,9 @@ import org.koin.test.KoinTest
 import org.koin.test.get
 import kotlin.test.Test
 import kotlin.test.assertFalse
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
-import kotlin.test.assertNotNull
 
 class CalendarDateRepositoryTest : KoinTest {
     private lateinit var databaseFactory: DatabaseFactory
@@ -87,30 +87,33 @@ class CalendarDateRepositoryTest : KoinTest {
     }
 
     @Test
-    fun `Get calendar date with ID that does not exist`() = runBlocking {
-        val calendarDate = calendarDateRepository.getById(-1)
-        assertTrue(calendarDate.isSuccess)
-        assertNull(calendarDate.getOrNull())
-    }
+    fun `Get calendar date with ID that does not exist`() =
+        runBlocking {
+            val calendarDate = calendarDateRepository.getById(-1)
+            assertTrue(calendarDate.isSuccess)
+            assertNull(calendarDate.getOrNull())
+        }
 
     @Test
-    fun `Update existing calendar date`() = runBlocking {
-        val newCaledar = Calendar("1", true, true, true, true, true, true, true, LocalDate(2023, 1, 1), LocalDate(2023, 12, 31))
-        runBlocking { calendarRepository.add(newCaledar) }
-        val newCalendarDate = CalendarDate(1, "1", LocalDate(2023, 1, 1), ScheduleAdjustmentType.SERVICE_ADDED)
-        runBlocking { calendarDateRepository.add(newCalendarDate) }
-        val updatedCalendarDate = CalendarDate(1, "1", LocalDate(2024, 1, 1), ScheduleAdjustmentType.SERVICE_REMOVED)
-        val result = calendarDateRepository.update(updatedCalendarDate)
-        assertTrue(result.isSuccess)
-        assertTrue(result.getOrNull()!!)
-    }
+    fun `Update existing calendar date`() =
+        runBlocking {
+            val newCaledar = Calendar("1", true, true, true, true, true, true, true, LocalDate(2023, 1, 1), LocalDate(2023, 12, 31))
+            runBlocking { calendarRepository.add(newCaledar) }
+            val newCalendarDate = CalendarDate(1, "1", LocalDate(2023, 1, 1), ScheduleAdjustmentType.SERVICE_ADDED)
+            runBlocking { calendarDateRepository.add(newCalendarDate) }
+            val updatedCalendarDate = CalendarDate(1, "1", LocalDate(2024, 1, 1), ScheduleAdjustmentType.SERVICE_REMOVED)
+            val result = calendarDateRepository.update(updatedCalendarDate)
+            assertTrue(result.isSuccess)
+            assertTrue(result.getOrNull()!!)
+        }
 
     @Test
-    fun `Update calendar date with non-existent ID`() = runBlocking {
-        val updatedCalendarDate = CalendarDate(1, "1", LocalDate(2024, 1, 1), ScheduleAdjustmentType.SERVICE_REMOVED)
-        val result = calendarDateRepository.update(updatedCalendarDate)
-        assertTrue(result.isFailure)
-    }
+    fun `Update calendar date with non-existent ID`() =
+        runBlocking {
+            val updatedCalendarDate = CalendarDate(1, "1", LocalDate(2024, 1, 1), ScheduleAdjustmentType.SERVICE_REMOVED)
+            val result = calendarDateRepository.update(updatedCalendarDate)
+            assertTrue(result.isFailure)
+        }
 
     @Test
     fun `Delete calendar date with existing ID`() {
@@ -125,11 +128,12 @@ class CalendarDateRepositoryTest : KoinTest {
     }
 
     @Test
-    fun `Delete calendar date with non-existing ID`() = runBlocking {
-        val newCaledar = Calendar("1", true, true, true, true, true, true, true, LocalDate(2023, 1, 1), LocalDate(2023, 12, 31))
-        runBlocking { calendarRepository.add(newCaledar) }
-        val result = calendarDateRepository.deleteById(1)
-        assertTrue(result.isSuccess)
-        assertFalse(result.getOrNull()!!)
-    }
+    fun `Delete calendar date with non-existing ID`() =
+        runBlocking {
+            val newCaledar = Calendar("1", true, true, true, true, true, true, true, LocalDate(2023, 1, 1), LocalDate(2023, 12, 31))
+            runBlocking { calendarRepository.add(newCaledar) }
+            val result = calendarDateRepository.deleteById(1)
+            assertTrue(result.isSuccess)
+            assertFalse(result.getOrNull()!!)
+        }
 }

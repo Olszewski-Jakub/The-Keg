@@ -31,5 +31,5 @@ data class CalendarDto(
     @SerialName("saturday") val saturday: Boolean? = null,
     @SerialName("sunday") val sunday: Boolean? = null,
     @SerialName("start_date") val startDate: Int? = null,
-    @SerialName("end_date") val endDate: Int? = null
+    @SerialName("end_date") val endDate: Int? = null,
 )

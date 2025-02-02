@@ -7,7 +7,6 @@ import com.trackmybus.theKeg.features.schedule.domain.model.Stop
  * Data Access Object (DAO) interface for managing stop data in the local database.
  */
 interface StopDao {
-
     /**
      * Retrieves all stops from the local database.
      * @return A [Result] containing a list of [StopEntity] objects.

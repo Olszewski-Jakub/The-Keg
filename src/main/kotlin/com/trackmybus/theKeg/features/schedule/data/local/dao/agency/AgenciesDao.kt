@@ -7,7 +7,6 @@ import com.trackmybus.theKeg.features.schedule.domain.model.Agency
  * Data Access Object (DAO) interface for managing agency data in the local database.
  */
 interface AgenciesDao {
-
     /**
      * Retrieves all agencies from the local database.
      * @return A [Result] containing a list of [AgencyEntity] objects.

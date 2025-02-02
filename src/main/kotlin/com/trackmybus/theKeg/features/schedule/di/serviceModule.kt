@@ -5,6 +5,7 @@ import com.trackmybus.theKeg.features.schedule.data.remote.service.GtfsScheduleS
 import com.trackmybus.theKeg.features.schedule.data.remote.service.GtfsScheduleServiceImpl
 import org.koin.dsl.module
 
-val serviceModules = module {
-    single<GtfsScheduleService> { GtfsScheduleServiceImpl(getLogger<GtfsScheduleServiceImpl>(), get(), get()) }
-}
+val serviceModules =
+    module {
+        single<GtfsScheduleService> { GtfsScheduleServiceImpl(getLogger<GtfsScheduleServiceImpl>(), get(), get()) }
+    }

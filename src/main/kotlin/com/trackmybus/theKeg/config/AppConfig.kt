@@ -1,10 +1,10 @@
 package com.trackmybus.theKeg.config
 
-import io.ktor.server.application.*
+import io.ktor.server.application.Application
 import org.koin.ktor.ext.inject
 
 data class ServerConfig(
-    val isProd: Boolean
+    val isProd: Boolean,
 )
 
 data class PostgresConfig(
@@ -14,7 +14,7 @@ data class PostgresConfig(
     val user: String,
     val password: String,
     val maxPoolSize: Int,
-    val autoCommit: Boolean
+    val autoCommit: Boolean,
 )
 
 data class GtfsConfig(
@@ -29,7 +29,7 @@ data class GtfsConfig(
     val stopsFile: String,
     val stopTimesFile: String,
     val tripsFile: String,
-    val feedInfoFile: String
+    val feedInfoFile: String,
 )
 
 class AppConfig {
@@ -52,18 +52,27 @@ fun Application.setupConfig() {
     val jdbcUrl = environment.config.property("postgres.jdbcURL").getString()
     val user = environment.config.property("postgres.user").getString()
     val password = environment.config.property("postgres.password").getString()
-    val maxPoolSize = environment.config.property("postgres.maxPoolSize").getString().toInt()
-    val autoCommit = environment.config.property("postgres.autoCommit").getString().toBoolean()
+    val maxPoolSize =
+        environment.config
+            .property("postgres.maxPoolSize")
+            .getString()
+            .toInt()
+    val autoCommit =
+        environment.config
+            .property("postgres.autoCommit")
+            .getString()
+            .toBoolean()
 
-    appConfig.postgresConfig = PostgresConfig(
-        driverClass = driverClass,
-        jdbcUrl = jdbcUrl,
-        database = database,
-        user = user,
-        password = password,
-        maxPoolSize = maxPoolSize,
-        autoCommit = autoCommit
-    )
+    appConfig.postgresConfig =
+        PostgresConfig(
+            driverClass = driverClass,
+            jdbcUrl = jdbcUrl,
+            database = database,
+            user = user,
+            password = password,
+            maxPoolSize = maxPoolSize,
+            autoCommit = autoCommit,
+        )
 
     // GTFS
     val gtfsUrl = environment.config.property("gtfs.url").getString()
@@ -79,19 +88,19 @@ fun Application.setupConfig() {
     val feedInfoFile = environment.config.property("gtfs.feedInfoFile").getString()
     val outputDir = environment.config.property("gtfs.outputDir").getString()
 
-    appConfig.gtfsConfig = GtfsConfig(
-        url = gtfsUrl,
-        gtfsFile = gtfsFile,
-        agencyFile = agencyFile,
-        calendarFile = calendarFile,
-        calendarDatesFile = calendarDatesFile,
-        routesFile = routesFile,
-        shapesFile = shapesFile,
-        stopsFile = stopsFile,
-        stopTimesFile = stopTimesFile,
-        tripsFile = tripsFile,
-        feedInfoFile = feedInfoFile,
-        outputDir = outputDir
-    )
+    appConfig.gtfsConfig =
+        GtfsConfig(
+            url = gtfsUrl,
+            gtfsFile = gtfsFile,
+            agencyFile = agencyFile,
+            calendarFile = calendarFile,
+            calendarDatesFile = calendarDatesFile,
+            routesFile = routesFile,
+            shapesFile = shapesFile,
+            stopsFile = stopsFile,
+            stopTimesFile = stopTimesFile,
+            tripsFile = tripsFile,
+            feedInfoFile = feedInfoFile,
+            outputDir = outputDir,
+        )
 }
-

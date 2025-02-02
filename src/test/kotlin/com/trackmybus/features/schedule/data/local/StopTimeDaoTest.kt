@@ -21,7 +21,11 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import org.junit.After
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.koin.core.context.stopKoin
@@ -72,7 +76,7 @@ class StopTimeDaoTest : KoinTest {
             shapeDao.addShape(newShape)
         }
         val newTrip = Trip("route1", "1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
-        val newStop = Stop("stop1", 1, "Stop 1",1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
+        val newStop = Stop("stop1", 1, "Stop 1", 1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
         runBlocking { tripDao.addTrip(newTrip) }
         runBlocking { stopDao.addStop(newStop) }
         val newStopTime = StopTime(1, "trip1", LocalTime(12, 0, 0), LocalTime(12, 5, 0), "stop1", 1, "Stop Headsign", 1, 1, 1)
@@ -97,7 +101,7 @@ class StopTimeDaoTest : KoinTest {
             shapeDao.addShape(newShape)
         }
         val newTrip = Trip("route1", "1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
-        val newStop = Stop("stop1", 1, "Stop 1",1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
+        val newStop = Stop("stop1", 1, "Stop 1", 1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
         runBlocking { tripDao.addTrip(newTrip) }
         runBlocking { stopDao.addStop(newStop) }
         val newStopTime = StopTime(1, "trip1", LocalTime(12, 0, 0), LocalTime(12, 5, 0), "stop1", 1, "Stop Headsign", 1, 1, 1)
@@ -110,28 +114,29 @@ class StopTimeDaoTest : KoinTest {
     }
 
     @Test
-    fun `Get list of all stop times`() = runBlocking {
+    fun `Get list of all stop times`() =
         runBlocking {
-            val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
-            agenciesDao.addAgency(newAgency)
-            val newRoute = Route("route1", "1", "Route 1", "shortName", 1, "desc", "url", "color", "textColor")
-            val newCalendar =
-                Calendar("1", true, true, true, true, true, true, true, LocalDate(2023, 1, 1), LocalDate(2023, 12, 31))
-            val newShape = Shape(1, "shapeId", 0.0, 0.0, 1, 0.0)
-            routeDao.addRoute(newRoute)
-            calendarDao.addCalendar(newCalendar)
-            shapeDao.addShape(newShape)
+            runBlocking {
+                val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
+                agenciesDao.addAgency(newAgency)
+                val newRoute = Route("route1", "1", "Route 1", "shortName", 1, "desc", "url", "color", "textColor")
+                val newCalendar =
+                    Calendar("1", true, true, true, true, true, true, true, LocalDate(2023, 1, 1), LocalDate(2023, 12, 31))
+                val newShape = Shape(1, "shapeId", 0.0, 0.0, 1, 0.0)
+                routeDao.addRoute(newRoute)
+                calendarDao.addCalendar(newCalendar)
+                shapeDao.addShape(newShape)
+            }
+            val newTrip = Trip("route1", "1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
+            val newStop = Stop("stop1", 1, "Stop 1", 1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
+            runBlocking { tripDao.addTrip(newTrip) }
+            runBlocking { stopDao.addStop(newStop) }
+            val newStopTime = StopTime(1, "trip1", LocalTime(12, 0, 0), LocalTime(12, 5, 0), "stop1", 1, "Stop Headsign", 1, 1, 1)
+            runBlocking { stopTimeDao.addStopTime(newStopTime) }
+            val stopTimes = stopTimeDao.getAllStopTimes()
+            assertTrue(stopTimes.isSuccess)
+            assertNotNull(stopTimes.getOrNull())
         }
-        val newTrip = Trip("route1", "1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
-        val newStop = Stop("stop1", 1, "Stop 1",1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
-        runBlocking { tripDao.addTrip(newTrip) }
-        runBlocking { stopDao.addStop(newStop) }
-        val newStopTime = StopTime(1, "trip1", LocalTime(12, 0, 0), LocalTime(12, 5, 0), "stop1", 1, "Stop Headsign", 1, 1, 1)
-        runBlocking { stopTimeDao.addStopTime(newStopTime) }
-        val stopTimes = stopTimeDao.getAllStopTimes()
-        assertTrue(stopTimes.isSuccess)
-        assertNotNull(stopTimes.getOrNull())
-    }
 
     @Test
     fun `Get stop time with existing ID`() {
@@ -147,7 +152,7 @@ class StopTimeDaoTest : KoinTest {
             shapeDao.addShape(newShape)
         }
         val newTrip = Trip("route1", "1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
-        val newStop = Stop("stop1", 1, "Stop 1",1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
+        val newStop = Stop("stop1", 1, "Stop 1", 1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
         runBlocking { tripDao.addTrip(newTrip) }
         runBlocking { stopDao.addStop(newStop) }
         val newStopTime = StopTime(1, "trip1", LocalTime(12, 0, 0), LocalTime(12, 5, 0), "stop1", 1, "Stop Headsign", 1, 1, 1)
@@ -159,43 +164,48 @@ class StopTimeDaoTest : KoinTest {
     }
 
     @Test
-    fun `Get stop time with ID that does not exist`() = runBlocking {
-        val stopTime = stopTimeDao.getStopTimeById(-1)
-        assertTrue(stopTime.isSuccess)
-        assertNull(stopTime.getOrNull())
-    }
-
-    @Test
-    fun `Update existing stop time`() = runBlocking {
+    fun `Get stop time with ID that does not exist`() =
         runBlocking {
-            val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
-            agenciesDao.addAgency(newAgency)
-            val newRoute = Route("route1", "1", "Route 1", "shortName", 1, "desc", "url", "color", "textColor")
-            val newCalendar =
-                Calendar("1", true, true, true, true, true, true, true, LocalDate(2023, 1, 1), LocalDate(2023, 12, 31))
-            val newShape = Shape(1, "shapeId", 0.0, 0.0, 1, 0.0)
-            routeDao.addRoute(newRoute)
-            calendarDao.addCalendar(newCalendar)
-            shapeDao.addShape(newShape)
+            val stopTime = stopTimeDao.getStopTimeById(-1)
+            assertTrue(stopTime.isSuccess)
+            assertNull(stopTime.getOrNull())
         }
-        val newTrip = Trip("route1", "1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
-        val newStop = Stop("stop1", 1, "Stop 1",1.0, 1.0, "Stop 1 Description",  "Zone 1", "Stop URL", 1, "Parent Station")
-        runBlocking { tripDao.addTrip(newTrip) }
-        runBlocking { stopDao.addStop(newStop) }
-        val newStopTime = StopTime(1, "trip1", LocalTime(12, 0, 0), LocalTime(12, 5, 0), "stop1", 1, "Stop Headsign", 1, 1, 1)
-        runBlocking { stopTimeDao.addStopTime(newStopTime) }
-        val updatedStopTime = StopTime(1, "trip1", LocalTime(12, 10, 0), LocalTime(12, 15, 0), "stop1", 1, "Updated Stop Headsign", 1, 1, 1)
-        val result = stopTimeDao.updateStopTime(updatedStopTime)
-        assertTrue(result.isSuccess)
-        assertTrue(result.getOrNull()!!)
-    }
 
     @Test
-    fun `Update stop time with non-existent ID`() = runBlocking {
-        val updatedStopTime = StopTime(1, "trip1", LocalTime(12, 10, 0), LocalTime(12, 15, 0), "stop1", 1, "Updated Stop Headsign", 1, 1, 1)
-        val result = stopTimeDao.updateStopTime(updatedStopTime)
-        assertTrue(result.isFailure)
-    }
+    fun `Update existing stop time`() =
+        runBlocking {
+            runBlocking {
+                val newAgency = Agency("1", "New Agency", "https://newagency.com", "UTC")
+                agenciesDao.addAgency(newAgency)
+                val newRoute = Route("route1", "1", "Route 1", "shortName", 1, "desc", "url", "color", "textColor")
+                val newCalendar =
+                    Calendar("1", true, true, true, true, true, true, true, LocalDate(2023, 1, 1), LocalDate(2023, 12, 31))
+                val newShape = Shape(1, "shapeId", 0.0, 0.0, 1, 0.0)
+                routeDao.addRoute(newRoute)
+                calendarDao.addCalendar(newCalendar)
+                shapeDao.addShape(newShape)
+            }
+            val newTrip = Trip("route1", "1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
+            val newStop = Stop("stop1", 1, "Stop 1", 1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
+            runBlocking { tripDao.addTrip(newTrip) }
+            runBlocking { stopDao.addStop(newStop) }
+            val newStopTime = StopTime(1, "trip1", LocalTime(12, 0, 0), LocalTime(12, 5, 0), "stop1", 1, "Stop Headsign", 1, 1, 1)
+            runBlocking { stopTimeDao.addStopTime(newStopTime) }
+            val updatedStopTime =
+                StopTime(1, "trip1", LocalTime(12, 10, 0), LocalTime(12, 15, 0), "stop1", 1, "Updated Stop Headsign", 1, 1, 1)
+            val result = stopTimeDao.updateStopTime(updatedStopTime)
+            assertTrue(result.isSuccess)
+            assertTrue(result.getOrNull()!!)
+        }
+
+    @Test
+    fun `Update stop time with non-existent ID`() =
+        runBlocking {
+            val updatedStopTime =
+                StopTime(1, "trip1", LocalTime(12, 10, 0), LocalTime(12, 15, 0), "stop1", 1, "Updated Stop Headsign", 1, 1, 1)
+            val result = stopTimeDao.updateStopTime(updatedStopTime)
+            assertTrue(result.isFailure)
+        }
 
     @Test
     fun `Delete stop time with existing ID`() {
@@ -210,8 +220,8 @@ class StopTimeDaoTest : KoinTest {
             calendarDao.addCalendar(newCalendar)
             shapeDao.addShape(newShape)
         }
-        val newTrip = Trip("route1","1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
-        val newStop = Stop("stop1", 1, "Stop 1",1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
+        val newTrip = Trip("route1", "1", "trip1", "headsign", "shortName", 1, "blockId", "shapeId")
+        val newStop = Stop("stop1", 1, "Stop 1", 1.0, 1.0, "Stop 1 Description", "Zone 1", "Stop URL", 1, "Parent Station")
         runBlocking { tripDao.addTrip(newTrip) }
         runBlocking { stopDao.addStop(newStop) }
         val newStopTime = StopTime(1, "trip1", LocalTime(12, 0, 0), LocalTime(12, 5, 0), "stop1", 1, "Stop Headsign", 1, 1, 1)
@@ -223,9 +233,10 @@ class StopTimeDaoTest : KoinTest {
     }
 
     @Test
-    fun `Delete stop time with non-existing ID`() = runBlocking {
-        val result = stopTimeDao.deleteStopTime(1)
-        assertTrue(result.isSuccess)
-        assertFalse(result.getOrNull()!!)
-    }
+    fun `Delete stop time with non-existing ID`() =
+        runBlocking {
+            val result = stopTimeDao.deleteStopTime(1)
+            assertTrue(result.isSuccess)
+            assertFalse(result.getOrNull()!!)
+        }
 }

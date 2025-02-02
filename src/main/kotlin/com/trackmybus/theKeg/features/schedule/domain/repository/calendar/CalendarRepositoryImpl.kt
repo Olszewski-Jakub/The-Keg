@@ -1,16 +1,19 @@
 package com.trackmybus.theKeg.features.schedule.domain.repository.calendar
 
 import com.trackmybus.theKeg.features.schedule.data.local.dao.calendar.CalendarDao
-import com.trackmybus.theKeg.features.schedule.domain.mapper.toEntity
 import com.trackmybus.theKeg.features.schedule.domain.mapper.toModel
 import com.trackmybus.theKeg.features.schedule.domain.model.Calendar
 import com.trackmybus.theKeg.infrastructure.mappers.ResultMapper.mapResult
 import io.ktor.util.logging.Logger
 
-class CalendarRepositoryImpl(private val logger: Logger, private val calendarDao: CalendarDao) : CalendarRepository {
+class CalendarRepositoryImpl(
+    private val logger: Logger,
+    private val calendarDao: CalendarDao,
+) : CalendarRepository {
     override suspend fun getAll(): Result<List<Calendar>> {
         logger.info("Fetching all calendars")
-        return calendarDao.getAllCalendars()
+        return calendarDao
+            .getAllCalendars()
             .mapResult { it.map { calendarEntity -> calendarEntity.toModel() } }
             .also { result ->
                 result.onSuccess { logger.info("Successfully fetched all calendars") }
@@ -20,7 +23,8 @@ class CalendarRepositoryImpl(private val logger: Logger, private val calendarDao
 
     override suspend fun getById(id: String): Result<Calendar?> {
         logger.info("Fetching calendar with id: $id")
-        return calendarDao.getCalendarById(id)
+        return calendarDao
+            .getCalendarById(id)
             .mapResult { it?.toModel() }
             .also { result ->
                 result.onSuccess { logger.info("Successfully fetched calendar with id: $id") }
@@ -30,7 +34,8 @@ class CalendarRepositoryImpl(private val logger: Logger, private val calendarDao
 
     override suspend fun add(calendar: Calendar): Result<Calendar> {
         logger.info("Adding calendar: ${calendar.serviceId}")
-        return calendarDao.addCalendar(calendar)
+        return calendarDao
+            .addCalendar(calendar)
             .mapResult { it.toModel() }
             .also { result ->
                 result.onSuccess { logger.info("Successfully added calendar: ${calendar.serviceId}") }
@@ -40,7 +45,8 @@ class CalendarRepositoryImpl(private val logger: Logger, private val calendarDao
 
     override suspend fun update(calendar: Calendar): Result<Boolean> {
         logger.info("Updating calendar: ${calendar.serviceId}")
-        return calendarDao.updateCalendar(calendar)
+        return calendarDao
+            .updateCalendar(calendar)
             .mapResult { it }
             .also { result ->
                 result.onSuccess { logger.info("Successfully updated calendar: ${calendar.serviceId}") }
@@ -50,7 +56,8 @@ class CalendarRepositoryImpl(private val logger: Logger, private val calendarDao
 
     override suspend fun deleteById(id: String): Result<Boolean> {
         logger.info("Deleting calendar with id: $id")
-        return calendarDao.deleteCalendar(id)
+        return calendarDao
+            .deleteCalendar(id)
             .mapResult { it }
             .also { result ->
                 result.onSuccess { logger.info("Successfully deleted calendar with id: $id") }

@@ -19,7 +19,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property startDate The start date of the service.
  * @property endDate The end date of the service.
  */
-class CalendarEntity(id: EntityID<String>): Entity<String>(id) {
+class CalendarEntity(
+    id: EntityID<String>,
+) : Entity<String>(id) {
     companion object : EntityClass<String, CalendarEntity>(CalendarsTable)
 
     var serviceId by CalendarsTable.serviceId

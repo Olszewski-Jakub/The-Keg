@@ -18,7 +18,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property routeColor The color of the route.
  * @property routeTextColor The text color of the route.
  */
-class RouteEntity(id: EntityID<String>): Entity<String>(id)  {
+class RouteEntity(
+    id: EntityID<String>,
+) : Entity<String>(id) {
     companion object : EntityClass<String, RouteEntity>(RoutesTable)
 
     var routeId by RoutesTable.routeId

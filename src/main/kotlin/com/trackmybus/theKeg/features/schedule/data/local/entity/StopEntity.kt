@@ -19,7 +19,9 @@ import org.jetbrains.exposed.dao.id.EntityID
  * @property locationType The location type of the stop.
  * @property parentStation The parent station of the stop.
  */
-class StopEntity(id: EntityID<String>): Entity<String>(id) {
+class StopEntity(
+    id: EntityID<String>,
+) : Entity<String>(id) {
     companion object : EntityClass<String, StopEntity>(StopsTable)
 
     var stopId by StopsTable.stopId

@@ -23,5 +23,5 @@ data class FeedInfoDto(
     @SerialName("feed_lang") val feedLang: String? = null,
     @SerialName("feed_start_date") val feedStartDate: Int? = null,
     @SerialName("feed_end_date") val feedEndDate: Int? = null,
-    @SerialName("feed_version") val feedVersion: String? = null
+    @SerialName("feed_version") val feedVersion: String? = null,
 )

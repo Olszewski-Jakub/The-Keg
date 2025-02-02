@@ -6,10 +6,14 @@ import com.trackmybus.theKeg.features.schedule.domain.model.Shape
 import com.trackmybus.theKeg.infrastructure.mappers.ResultMapper.mapResult
 import io.ktor.util.logging.Logger
 
-class ShapeRepositoryImpl(private val logger: Logger, private val shapeDao: ShapeDao): ShapeRepository{
+class ShapeRepositoryImpl(
+    private val logger: Logger,
+    private val shapeDao: ShapeDao,
+) : ShapeRepository {
     override suspend fun getAll(): Result<List<Shape>> {
         logger.info("Fetching all shapes")
-        return shapeDao.getAllShapes()
+        return shapeDao
+            .getAllShapes()
             .mapResult { it.map { shapeEntity -> shapeEntity.toModel() } }
             .also { result ->
                 result.onSuccess { logger.info("Successfully fetched all shapes") }
@@ -19,7 +23,8 @@ class ShapeRepositoryImpl(private val logger: Logger, private val shapeDao: Shap
 
     override suspend fun getById(id: Int): Result<Shape?> {
         logger.info("Fetching shape with id: $id")
-        return shapeDao.getShapeById(id)
+        return shapeDao
+            .getShapeById(id)
             .mapResult { it?.toModel() }
             .also { result ->
                 result.onSuccess { logger.info("Successfully fetched shape with id: $id") }
@@ -29,7 +34,8 @@ class ShapeRepositoryImpl(private val logger: Logger, private val shapeDao: Shap
 
     override suspend fun add(calendar: Shape): Result<Shape> {
         logger.info("Adding shape: ${calendar.shapeId}")
-        return shapeDao.addShape(calendar)
+        return shapeDao
+            .addShape(calendar)
             .mapResult { it.toModel() }
             .also { result ->
                 result.onSuccess { logger.info("Successfully added shape: ${calendar.shapeId}") }
@@ -39,7 +45,8 @@ class ShapeRepositoryImpl(private val logger: Logger, private val shapeDao: Shap
 
     override suspend fun update(calendar: Shape): Result<Boolean> {
         logger.info("Updating shape: ${calendar.shapeId}")
-        return shapeDao.updateShape(calendar)
+        return shapeDao
+            .updateShape(calendar)
             .mapResult { it }
             .also { result ->
                 result.onSuccess { logger.info("Successfully updated shape: ${calendar.shapeId}") }
@@ -49,7 +56,8 @@ class ShapeRepositoryImpl(private val logger: Logger, private val shapeDao: Shap
 
     override suspend fun deleteById(id: Int): Result<Boolean> {
         logger.info("Deleting shape with id: $id")
-        return shapeDao.deleteShape(id)
+        return shapeDao
+            .deleteShape(id)
             .mapResult { it }
             .also { result ->
                 result.onSuccess { logger.info("Successfully deleted shape with id: $id") }

@@ -21,5 +21,5 @@ data class ShapeDto(
     @SerialName("shape_pt_lat") val shapePtLat: Double? = null,
     @SerialName("shape_pt_lon") val shapePtLon: Double? = null,
     @SerialName("shape_pt_sequence") val shapePtSequence: Int? = null,
-    @SerialName("shape_dist_traveled") val shapeDistTraveled: Double? = null
+    @SerialName("shape_dist_traveled") val shapeDistTraveled: Double? = null,
 )

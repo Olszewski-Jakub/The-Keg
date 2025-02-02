@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.kotlin.datetime.date
  * Represents the `calendar` table, which stores service availability information.
  */
 object CalendarsTable : IdTable<String>("calendar") {
-    val serviceId = varchar("service_id",255).entityId()
+    val serviceId = varchar("service_id", 255).entityId()
     val monday = bool("monday").nullable()
     val tuesday = bool("tuesday").nullable()
     val wednesday = bool("wednesday").nullable()

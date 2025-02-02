@@ -31,5 +31,5 @@ data class StopDto(
     @SerialName("zone_id") val zoneId: String? = null,
     @SerialName("stop_url") val stopUrl: String? = null,
     @SerialName("location_type") val locationType: Int? = null,
-    @SerialName("parent_station") val parentStation: String? = null
+    @SerialName("parent_station") val parentStation: String? = null,
 )

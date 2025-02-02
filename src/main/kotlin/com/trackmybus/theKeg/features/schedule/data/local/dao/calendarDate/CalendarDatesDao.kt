@@ -1,15 +1,12 @@
 package com.trackmybus.theKeg.features.schedule.data.local.dao.calendarDate
 
 import com.trackmybus.theKeg.features.schedule.data.local.entity.CalendarDateEntity
-import com.trackmybus.theKeg.features.schedule.data.local.entity.CalendarEntity
 import com.trackmybus.theKeg.features.schedule.domain.model.CalendarDate
-import com.trackmybus.theKeg.features.schedule.domain.model.ScheduleAdjustmentType
 
 /**
  * Data Access Object (DAO) interface for managing calendar date data in the local database.
  */
 interface CalendarDatesDao {
-
     /**
      * Retrieves all calendar dates from the local database.
      * @return A [Result] containing a list of [CalendarDateEntity] objects.

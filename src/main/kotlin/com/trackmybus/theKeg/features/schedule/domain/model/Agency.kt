@@ -4,5 +4,5 @@ data class Agency(
     val agencyId: String,
     val agencyName: String,
     val agencyUrl: String,
-    val agencyTimezone: String
+    val agencyTimezone: String,
 )

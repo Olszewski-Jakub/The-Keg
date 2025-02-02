@@ -12,7 +12,8 @@ import kotlinx.serialization.json.Json
 import org.koin.ktor.ext.inject
 
 fun main(args: Array<String>) {
-    io.ktor.server.netty.EngineMain.main(args)
+    io.ktor.server.netty.EngineMain
+        .main(args)
 }
 
 fun Application.module() {
@@ -26,14 +27,15 @@ fun Application.module() {
 
 fun Application.configureSerialization() {
     install(ContentNegotiation) {
-        json(Json {
-            prettyPrint = true
-            isLenient = true
-            ignoreUnknownKeys = true
-        })
+        json(
+            Json {
+                prettyPrint = true
+                isLenient = true
+                ignoreUnknownKeys = true
+            },
+        )
     }
 }
-
 
 fun Application.configureDatabases() {
     val databaseFactory by inject<DatabaseFactory>()

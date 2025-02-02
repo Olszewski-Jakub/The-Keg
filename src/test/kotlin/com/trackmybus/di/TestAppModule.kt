@@ -1,6 +1,5 @@
 package com.trackmybus.di
 
-import com.trackmybus.theKeg.di.configModule
 import com.trackmybus.theKeg.di.csvModule
 import com.trackmybus.theKeg.di.databaseModule
 import com.trackmybus.theKeg.di.loggerModule
@@ -10,7 +9,6 @@ import io.ktor.server.application.install
 import org.koin.core.context.startKoin
 import org.koin.ktor.plugin.Koin
 import org.koin.logger.slf4jLogger
-import org.koin.test.KoinTest
 
 fun configureKoinUnitTest() {
     startKoin {
