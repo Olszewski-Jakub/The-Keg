@@ -23,13 +23,13 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CalendarDto(
     @SerialName("service_id") val serviceId: String? = null,
-    @SerialName("monday") val monday: Boolean? = null,
-    @SerialName("tuesday") val tuesday: Boolean? = null,
-    @SerialName("wednesday") val wednesday: Boolean? = null,
-    @SerialName("thursday") val thursday: Boolean? = null,
-    @SerialName("friday") val friday: Boolean? = null,
-    @SerialName("saturday") val saturday: Boolean? = null,
-    @SerialName("sunday") val sunday: Boolean? = null,
+    @SerialName("monday") val monday: Int? = null,
+    @SerialName("tuesday") val tuesday: Int? = null,
+    @SerialName("wednesday") val wednesday: Int? = null,
+    @SerialName("thursday") val thursday: Int? = null,
+    @SerialName("friday") val friday: Int? = null,
+    @SerialName("saturday") val saturday: Int? = null,
+    @SerialName("sunday") val sunday: Int? = null,
     @SerialName("start_date") val startDate: Int? = null,
     @SerialName("end_date") val endDate: Int? = null,
 )

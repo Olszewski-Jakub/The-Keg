@@ -17,6 +17,8 @@ import com.trackmybus.theKeg.features.schedule.domain.repository.stop.StopReposi
 import com.trackmybus.theKeg.features.schedule.domain.repository.stop.StopRepositoryImpl
 import com.trackmybus.theKeg.features.schedule.domain.repository.stopTime.StopTimeRepository
 import com.trackmybus.theKeg.features.schedule.domain.repository.stopTime.StopTimeRepositoryImpl
+import com.trackmybus.theKeg.features.schedule.domain.repository.stopsForRoute.GtfsQueryRepository
+import com.trackmybus.theKeg.features.schedule.domain.repository.stopsForRoute.GtfsQueryRepositoryImpl
 import com.trackmybus.theKeg.features.schedule.domain.repository.trip.TripRepository
 import com.trackmybus.theKeg.features.schedule.domain.repository.trip.TripRepositoryImpl
 import org.koin.dsl.module
@@ -32,4 +34,5 @@ val repositoryModule =
         single<StopRepository> { StopRepositoryImpl(getLogger<StopRepositoryImpl>(), get()) }
         single<StopTimeRepository> { StopTimeRepositoryImpl(getLogger<StopTimeRepositoryImpl>(), get()) }
         single<TripRepository> { TripRepositoryImpl(getLogger<TripRepositoryImpl>(), get()) }
+        single<GtfsQueryRepository> { GtfsQueryRepositoryImpl(getLogger<GtfsQueryRepositoryImpl>(), get()) }
     }

@@ -30,6 +30,16 @@ class RouteDaoImpl(
             logger.error("Error getting route by id: $id", it)
         }
 
+    override suspend fun getRoutesByType(type: Int): Result<List<RouteEntity>> {
+        return runCatching {
+            dbFactory.dbQuery {
+                RouteEntity.find { RoutesTable.routeType eq type }.toList()
+            }
+        }.onFailure {
+            logger.error("Error getting routes by type: $type", it)
+        }
+    }
+
     override suspend fun addRoute(route: Route): Result<RouteEntity> =
         runCatching {
             dbFactory.dbQuery {

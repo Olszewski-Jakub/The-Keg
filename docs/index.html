@@ -689,6 +689,20 @@
   <script>
     // Script section to load models into a JS Var
     var defs = {}
+            defs["ErrorResponse"] = {
+  "type" : "object",
+  "properties" : {
+    "errorCode" : {
+      "type" : "integer"
+    },
+    "message" : {
+      "type" : "string"
+    },
+    "details" : {
+      "type" : "string"
+    }
+  }
+};
   </script>
 
   <div class="container-fluid">
@@ -705,9 +719,34 @@
             -->
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
-                  <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
-                    <li data-group="Default" data-name="rootGet" class="">
-                      <a href="#api-Default-rootGet">rootGet</a>
+                  <li class="nav-header" data-group="Routes"><a href="#api-Routes">API Methods - Routes</a></li>
+                    <li data-group="Routes" data-name="getAllRoutes" class="">
+                      <a href="#api-Routes-getAllRoutes">getAllRoutes</a>
+                    </li>
+                    <li data-group="Routes" data-name="getRouteByType" class="">
+                      <a href="#api-Routes-getRouteByType">getRouteByType</a>
+                    </li>
+                    <li data-group="Routes" data-name="getRouteVariants" class="">
+                      <a href="#api-Routes-getRouteVariants">getRouteVariants</a>
+                    </li>
+                    <li data-group="Routes" data-name="getStopList" class="">
+                      <a href="#api-Routes-getStopList">getStopList</a>
+                    </li>
+                  <li class="nav-header" data-group="Schedule"><a href="#api-Schedule">API Methods - Schedule</a></li>
+                    <li data-group="Schedule" data-name="getAllRoutes" class="">
+                      <a href="#api-Schedule-getAllRoutes">getAllRoutes</a>
+                    </li>
+                    <li data-group="Schedule" data-name="getRouteByType" class="">
+                      <a href="#api-Schedule-getRouteByType">getRouteByType</a>
+                    </li>
+                    <li data-group="Schedule" data-name="getRouteVariants" class="">
+                      <a href="#api-Schedule-getRouteVariants">getRouteVariants</a>
+                    </li>
+                    <li data-group="Schedule" data-name="getStopList" class="">
+                      <a href="#api-Schedule-getStopList">getStopList</a>
+                    </li>
+                    <li data-group="Schedule" data-name="updateTfiScheduleRoute" class="">
+                      <a href="#api-Schedule-updateTfiScheduleRoute">updateTfiScheduleRoute</a>
                     </li>
           </ul>
         </nav>
@@ -728,99 +767,95 @@
           </div>
         </div>
         <div id="sections">
-                <section id="api-Default">
-                  <h1>Default</h1>
-                    <div id="api-Default-rootGet">
-                      <article id="api-Default-rootGet-0" data-group="User" data-name="rootGet" data-version="0">
+                <section id="api-Routes">
+                  <h1>Routes</h1>
+                    <div id="api-Routes-getAllRoutes">
+                      <article id="api-Routes-getAllRoutes-0" data-group="User" data-name="getAllRoutes" data-version="0">
                         <div class="pull-left">
-                          <h1>rootGet</h1>
-                          <p></p>
+                          <h1>getAllRoutes</h1>
+                          <p>Get all routes</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">Hello World!</p>
+                        <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/route/all</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-rootGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-rootGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-rootGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-rootGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-rootGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-rootGet-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Routes-getAllRoutes-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Routes-getAllRoutes-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Routes-getAllRoutes-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Routes-getAllRoutes-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Routes-getAllRoutes-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Routes-getAllRoutes-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Routes-getAllRoutes-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Routes-getAllRoutes-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Routes-getAllRoutes-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Routes-getAllRoutes-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Routes-getAllRoutes-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-rootGet-0-curl">
+                          <div class="tab-pane active" id="examples-Routes-getAllRoutes-0-curl">
                            <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Accept: text/plain"\
-"http://0.0.0.0:8080/"</code></pre>
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/route/all"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-rootGet-0-java">
+                          <div class="tab-pane" id="examples-Routes-getAllRoutes-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
+import io.swagger.client.api.RoutesApi;
 
 import java.io.File;
 import java.util.*;
 
-public class DefaultApiExample {
+public class RoutesApiExample {
 
     public static void main(String[] args) {
         
-        DefaultApi apiInstance = new DefaultApi();
+        RoutesApi apiInstance = new RoutesApi();
         try {
-            'String' result = apiInstance.rootGet();
-            System.out.println(result);
+            apiInstance.getAllRoutes();
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rootGet");
+            System.err.println("Exception when calling RoutesApi#getAllRoutes");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-rootGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+                          <div class="tab-pane" id="examples-Routes-getAllRoutes-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.RoutesApi;
 
-public class DefaultApiExample {
+public class RoutesApiExample {
 
     public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
+        RoutesApi apiInstance = new RoutesApi();
         try {
-            'String' result = apiInstance.rootGet();
-            System.out.println(result);
+            apiInstance.getAllRoutes();
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#rootGet");
+            System.err.println("Exception when calling RoutesApi#getAllRoutes");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-rootGet-0-groovy">
+  <div class="tab-pane" id="examples-Routes-getAllRoutes-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-rootGet-0-objc">
+                            <div class="tab-pane" id="examples-Routes-getAllRoutes-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
+RoutesApi *apiInstance = [[RoutesApi alloc] init];
 
-[apiInstance rootGetWithCompletionHandler: 
-              ^('String' output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
+// Get all routes
+[apiInstance getAllRoutesWithCompletionHandler: 
+              ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
                             }
@@ -828,25 +863,25 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-rootGet-0-javascript">
+                            <div class="tab-pane" id="examples-Routes-getAllRoutes-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
 
-var api = new TheKeg.DefaultApi()
+var api = new TheKeg.RoutesApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
-api.rootGet(callback);
+api.getAllRoutes(callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-rootGet-0-angular">
+                            <!--<div class="tab-pane" id="examples-Routes-getAllRoutes-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-rootGet-0-csharp">
+                            <div class="tab-pane" id="examples-Routes-getAllRoutes-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -855,21 +890,21 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class rootGetExample
+    public class getAllRoutesExample
     {
         public void main()
         {
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new RoutesApi();
 
             try
             {
-                'String' result = apiInstance.rootGet();
-                Debug.WriteLine(result);
+                // Get all routes
+                apiInstance.getAllRoutes();
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.rootGet: " + e.Message );
+                Debug.Print("Exception when calling RoutesApi.getAllRoutes: " + e.Message );
             }
         }
     }
@@ -877,38 +912,36 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-rootGet-0-php">
+                            <div class="tab-pane" id="examples-Routes-getAllRoutes-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\ApiDefaultApi();
+$api_instance = new Swagger\Client\ApiRoutesApi();
 
 try {
-    $result = $api_instance->rootGet();
-    print_r($result);
+    $api_instance->getAllRoutes();
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->rootGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling RoutesApi->getAllRoutes: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-rootGet-0-perl">
+                            <div class="tab-pane" id="examples-Routes-getAllRoutes-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
+use WWW::SwaggerClient::RoutesApi;
 
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $api_instance = WWW::SwaggerClient::RoutesApi->new();
 
 eval { 
-    my $result = $api_instance->rootGet();
-    print Dumper($result);
+    $api_instance->getAllRoutes();
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->rootGet: $@\n";
+    warn "Exception when calling RoutesApi->getAllRoutes: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-rootGet-0-python">
+                            <div class="tab-pane" id="examples-Routes-getAllRoutes-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -916,13 +949,13 @@ from swagger_client.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = swagger_client.RoutesApi()
 
 try: 
-    api_response = api_instance.root_get()
-    pprint(api_response)
+    # Get all routes
+    api_instance.get_all_routes()
 except ApiException as e:
-    print("Exception when calling DefaultApi->rootGet: %s\n" % e)</code></pre>
+    print("Exception when calling RoutesApi->getAllRoutes: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -934,37 +967,39 @@ except ApiException as e:
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
+                            <h3> Status: 200 - All routes fetched successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch all routes </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-rootGet-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-getAllRoutes-500-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-rootGet-200-schema">
-                                  <div id='responses-rootGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-getAllRoutes-500-schema">
+                                  <div id='responses-getAllRoutes-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "OK",
+  "description" : "Failed to fetch all routes",
   "content" : {
-    "text/plain" : {
+    "application/json" : {
       "schema" : {
-        "type" : "string",
-        "x-content-type" : "text/plain"
-      },
-      "examples" : {
-        "Example#1" : {
-          "value" : "Hello World!"
-        }
+        "$ref" : "#/components/schemas/ErrorResponse"
       }
     }
   }
 };
-                                        var schema = schemaWrapper.content["text/plain"].schema;
+                                        var schema = schemaWrapper.content["application/json"].schema;
                                         if (schema.$ref != null) {
                                           schema = defsParser.$refs.get(schema.$ref);
                                         } else {
@@ -977,14 +1012,2443 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-rootGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-rootGet-200-schema-200');
+                                        $('#responses-getAllRoutes-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getAllRoutes-500-schema-500');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-rootGet-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-getAllRoutes-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Routes-getRouteByType">
+                      <article id="api-Routes-getRouteByType-0" data-group="User" data-name="getRouteByType" data-version="0">
+                        <div class="pull-left">
+                          <h1>getRouteByType</h1>
+                          <p>Get routes by type</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/route/byType</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Routes-getRouteByType-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteByType-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteByType-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Routes-getRouteByType-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Routes-getRouteByType-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteByType-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Routes-getRouteByType-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Routes-getRouteByType-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteByType-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteByType-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteByType-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Routes-getRouteByType-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/route/byType?type="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Routes-getRouteByType-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.RoutesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class RoutesApiExample {
+
+    public static void main(String[] args) {
+        
+        RoutesApi apiInstance = new RoutesApi();
+        String type = type_example; // String | 
+        try {
+            apiInstance.getRouteByType(type);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RoutesApi#getRouteByType");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Routes-getRouteByType-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.RoutesApi;
+
+public class RoutesApiExample {
+
+    public static void main(String[] args) {
+        RoutesApi apiInstance = new RoutesApi();
+        String type = type_example; // String | 
+        try {
+            apiInstance.getRouteByType(type);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RoutesApi#getRouteByType");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Routes-getRouteByType-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Routes-getRouteByType-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *type = type_example; // 
+
+RoutesApi *apiInstance = [[RoutesApi alloc] init];
+
+// Get routes by type
+[apiInstance getRouteByTypeWith:type
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getRouteByType-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
+
+var api = new TheKeg.RoutesApi()
+var type = type_example; // {{String}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.getRouteByType(type, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Routes-getRouteByType-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Routes-getRouteByType-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getRouteByTypeExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new RoutesApi();
+            var type = type_example;  // String | 
+
+            try
+            {
+                // Get routes by type
+                apiInstance.getRouteByType(type);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling RoutesApi.getRouteByType: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getRouteByType-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiRoutesApi();
+$type = type_example; // String | 
+
+try {
+    $api_instance->getRouteByType($type);
+} catch (Exception $e) {
+    echo 'Exception when calling RoutesApi->getRouteByType: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getRouteByType-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::RoutesApi;
+
+my $api_instance = WWW::SwaggerClient::RoutesApi->new();
+my $type = type_example; # String | 
+
+eval { 
+    $api_instance->getRouteByType(type => $type);
+};
+if ($@) {
+    warn "Exception when calling RoutesApi->getRouteByType: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getRouteByType-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.RoutesApi()
+type = type_example # String | 
+
+try: 
+    # Get routes by type
+    api_instance.get_route_by_type(type)
+except ApiException as e:
+    print("Exception when calling RoutesApi->getRouteByType: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">type*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getRouteByType_type">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Routes by type fetched successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Route type is required </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch routes by type </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getRouteByType-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getRouteByType-500-schema">
+                                  <div id='responses-getRouteByType-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Failed to fetch routes by type",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getRouteByType-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getRouteByType-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getRouteByType-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Routes-getRouteVariants">
+                      <article id="api-Routes-getRouteVariants-0" data-group="User" data-name="getRouteVariants" data-version="0">
+                        <div class="pull-left">
+                          <h1>getRouteVariants</h1>
+                          <p>Get route variants</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/route/variants</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Routes-getRouteVariants-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteVariants-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteVariants-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Routes-getRouteVariants-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Routes-getRouteVariants-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteVariants-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Routes-getRouteVariants-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Routes-getRouteVariants-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteVariants-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteVariants-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Routes-getRouteVariants-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Routes-getRouteVariants-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/route/variants?routeId="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Routes-getRouteVariants-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.RoutesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class RoutesApiExample {
+
+    public static void main(String[] args) {
+        
+        RoutesApi apiInstance = new RoutesApi();
+        String routeId = routeId_example; // String | 
+        try {
+            apiInstance.getRouteVariants(routeId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RoutesApi#getRouteVariants");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Routes-getRouteVariants-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.RoutesApi;
+
+public class RoutesApiExample {
+
+    public static void main(String[] args) {
+        RoutesApi apiInstance = new RoutesApi();
+        String routeId = routeId_example; // String | 
+        try {
+            apiInstance.getRouteVariants(routeId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RoutesApi#getRouteVariants");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Routes-getRouteVariants-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Routes-getRouteVariants-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *routeId = routeId_example; // 
+
+RoutesApi *apiInstance = [[RoutesApi alloc] init];
+
+// Get route variants
+[apiInstance getRouteVariantsWith:routeId
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getRouteVariants-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
+
+var api = new TheKeg.RoutesApi()
+var routeId = routeId_example; // {{String}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.getRouteVariants(routeId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Routes-getRouteVariants-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Routes-getRouteVariants-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getRouteVariantsExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new RoutesApi();
+            var routeId = routeId_example;  // String | 
+
+            try
+            {
+                // Get route variants
+                apiInstance.getRouteVariants(routeId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling RoutesApi.getRouteVariants: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getRouteVariants-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiRoutesApi();
+$routeId = routeId_example; // String | 
+
+try {
+    $api_instance->getRouteVariants($routeId);
+} catch (Exception $e) {
+    echo 'Exception when calling RoutesApi->getRouteVariants: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getRouteVariants-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::RoutesApi;
+
+my $api_instance = WWW::SwaggerClient::RoutesApi->new();
+my $routeId = routeId_example; # String | 
+
+eval { 
+    $api_instance->getRouteVariants(routeId => $routeId);
+};
+if ($@) {
+    warn "Exception when calling RoutesApi->getRouteVariants: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getRouteVariants-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.RoutesApi()
+routeId = routeId_example # String | 
+
+try: 
+    # Get route variants
+    api_instance.get_route_variants(routeId)
+except ApiException as e:
+    print("Exception when calling RoutesApi->getRouteVariants: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">routeId*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getRouteVariants_routeId">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Route variants fetched successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Route ID is required </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch route directions </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getRouteVariants-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getRouteVariants-500-schema">
+                                  <div id='responses-getRouteVariants-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Failed to fetch route directions",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getRouteVariants-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getRouteVariants-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getRouteVariants-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Routes-getStopList">
+                      <article id="api-Routes-getStopList-0" data-group="User" data-name="getStopList" data-version="0">
+                        <div class="pull-left">
+                          <h1>getStopList</h1>
+                          <p>Get stop list for a route</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/route/stops/list</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Routes-getStopList-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Routes-getStopList-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Routes-getStopList-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Routes-getStopList-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Routes-getStopList-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Routes-getStopList-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Routes-getStopList-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Routes-getStopList-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Routes-getStopList-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Routes-getStopList-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Routes-getStopList-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Routes-getStopList-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/route/stops/list?routeId=&firstStopId=&endStopId="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Routes-getStopList-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.RoutesApi;
+
+import java.io.File;
+import java.util.*;
+
+public class RoutesApiExample {
+
+    public static void main(String[] args) {
+        
+        RoutesApi apiInstance = new RoutesApi();
+        String routeId = routeId_example; // String | 
+        String firstStopId = firstStopId_example; // String | 
+        String endStopId = endStopId_example; // String | 
+        try {
+            apiInstance.getStopList(routeId, firstStopId, endStopId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RoutesApi#getStopList");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Routes-getStopList-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.RoutesApi;
+
+public class RoutesApiExample {
+
+    public static void main(String[] args) {
+        RoutesApi apiInstance = new RoutesApi();
+        String routeId = routeId_example; // String | 
+        String firstStopId = firstStopId_example; // String | 
+        String endStopId = endStopId_example; // String | 
+        try {
+            apiInstance.getStopList(routeId, firstStopId, endStopId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RoutesApi#getStopList");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Routes-getStopList-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Routes-getStopList-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *routeId = routeId_example; // 
+String *firstStopId = firstStopId_example; // 
+String *endStopId = endStopId_example; // 
+
+RoutesApi *apiInstance = [[RoutesApi alloc] init];
+
+// Get stop list for a route
+[apiInstance getStopListWith:routeId
+    firstStopId:firstStopId
+    endStopId:endStopId
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getStopList-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
+
+var api = new TheKeg.RoutesApi()
+var routeId = routeId_example; // {{String}} 
+var firstStopId = firstStopId_example; // {{String}} 
+var endStopId = endStopId_example; // {{String}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.getStopList(routeId, firstStopId, endStopId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Routes-getStopList-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Routes-getStopList-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getStopListExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new RoutesApi();
+            var routeId = routeId_example;  // String | 
+            var firstStopId = firstStopId_example;  // String | 
+            var endStopId = endStopId_example;  // String | 
+
+            try
+            {
+                // Get stop list for a route
+                apiInstance.getStopList(routeId, firstStopId, endStopId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling RoutesApi.getStopList: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getStopList-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiRoutesApi();
+$routeId = routeId_example; // String | 
+$firstStopId = firstStopId_example; // String | 
+$endStopId = endStopId_example; // String | 
+
+try {
+    $api_instance->getStopList($routeId, $firstStopId, $endStopId);
+} catch (Exception $e) {
+    echo 'Exception when calling RoutesApi->getStopList: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getStopList-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::RoutesApi;
+
+my $api_instance = WWW::SwaggerClient::RoutesApi->new();
+my $routeId = routeId_example; # String | 
+my $firstStopId = firstStopId_example; # String | 
+my $endStopId = endStopId_example; # String | 
+
+eval { 
+    $api_instance->getStopList(routeId => $routeId, firstStopId => $firstStopId, endStopId => $endStopId);
+};
+if ($@) {
+    warn "Exception when calling RoutesApi->getStopList: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Routes-getStopList-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.RoutesApi()
+routeId = routeId_example # String | 
+firstStopId = firstStopId_example # String | 
+endStopId = endStopId_example # String | 
+
+try: 
+    # Get stop list for a route
+    api_instance.get_stop_list(routeId, firstStopId, endStopId)
+except ApiException as e:
+    print("Exception when calling RoutesApi->getStopList: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">routeId*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getStopList_routeId">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">firstStopId*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getStopList_firstStopId">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">endStopId*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getStopList_endStopId">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Stops for route fetched successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Missing required parameters </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch stops for route </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getStopList-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getStopList-500-schema">
+                                  <div id='responses-getStopList-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Failed to fetch stops for route",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getStopList-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getStopList-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getStopList-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+                <section id="api-Schedule">
+                  <h1>Schedule</h1>
+                    <div id="api-Schedule-getAllRoutes">
+                      <article id="api-Schedule-getAllRoutes-0" data-group="User" data-name="getAllRoutes" data-version="0">
+                        <div class="pull-left">
+                          <h1>getAllRoutes</h1>
+                          <p>Get all routes</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/route/all</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Schedule-getAllRoutes-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Schedule-getAllRoutes-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Schedule-getAllRoutes-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-getAllRoutes-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Schedule-getAllRoutes-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Schedule-getAllRoutes-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-getAllRoutes-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Schedule-getAllRoutes-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Schedule-getAllRoutes-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Schedule-getAllRoutes-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Schedule-getAllRoutes-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Schedule-getAllRoutes-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/route/all"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ScheduleApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        
+        ScheduleApi apiInstance = new ScheduleApi();
+        try {
+            apiInstance.getAllRoutes();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#getAllRoutes");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ScheduleApi;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        ScheduleApi apiInstance = new ScheduleApi();
+        try {
+            apiInstance.getAllRoutes();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#getAllRoutes");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+ScheduleApi *apiInstance = [[ScheduleApi alloc] init];
+
+// Get all routes
+[apiInstance getAllRoutesWithCompletionHandler: 
+              ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
+
+var api = new TheKeg.ScheduleApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.getAllRoutes(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Schedule-getAllRoutes-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getAllRoutesExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new ScheduleApi();
+
+            try
+            {
+                // Get all routes
+                apiInstance.getAllRoutes();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ScheduleApi.getAllRoutes: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiScheduleApi();
+
+try {
+    $api_instance->getAllRoutes();
+} catch (Exception $e) {
+    echo 'Exception when calling ScheduleApi->getAllRoutes: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ScheduleApi;
+
+my $api_instance = WWW::SwaggerClient::ScheduleApi->new();
+
+eval { 
+    $api_instance->getAllRoutes();
+};
+if ($@) {
+    warn "Exception when calling ScheduleApi->getAllRoutes: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getAllRoutes-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ScheduleApi()
+
+try: 
+    # Get all routes
+    api_instance.get_all_routes()
+except ApiException as e:
+    print("Exception when calling ScheduleApi->getAllRoutes: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - All routes fetched successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch all routes </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getAllRoutes-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getAllRoutes-500-schema">
+                                  <div id='responses-getAllRoutes-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Failed to fetch all routes",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getAllRoutes-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getAllRoutes-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getAllRoutes-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Schedule-getRouteByType">
+                      <article id="api-Schedule-getRouteByType-0" data-group="User" data-name="getRouteByType" data-version="0">
+                        <div class="pull-left">
+                          <h1>getRouteByType</h1>
+                          <p>Get routes by type</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/route/byType</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Schedule-getRouteByType-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteByType-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteByType-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-getRouteByType-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Schedule-getRouteByType-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteByType-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-getRouteByType-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Schedule-getRouteByType-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteByType-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteByType-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteByType-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Schedule-getRouteByType-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/route/byType?type="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Schedule-getRouteByType-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ScheduleApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        
+        ScheduleApi apiInstance = new ScheduleApi();
+        String type = type_example; // String | 
+        try {
+            apiInstance.getRouteByType(type);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#getRouteByType");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Schedule-getRouteByType-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ScheduleApi;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        ScheduleApi apiInstance = new ScheduleApi();
+        String type = type_example; // String | 
+        try {
+            apiInstance.getRouteByType(type);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#getRouteByType");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Schedule-getRouteByType-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Schedule-getRouteByType-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *type = type_example; // 
+
+ScheduleApi *apiInstance = [[ScheduleApi alloc] init];
+
+// Get routes by type
+[apiInstance getRouteByTypeWith:type
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getRouteByType-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
+
+var api = new TheKeg.ScheduleApi()
+var type = type_example; // {{String}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.getRouteByType(type, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Schedule-getRouteByType-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Schedule-getRouteByType-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getRouteByTypeExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new ScheduleApi();
+            var type = type_example;  // String | 
+
+            try
+            {
+                // Get routes by type
+                apiInstance.getRouteByType(type);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ScheduleApi.getRouteByType: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getRouteByType-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiScheduleApi();
+$type = type_example; // String | 
+
+try {
+    $api_instance->getRouteByType($type);
+} catch (Exception $e) {
+    echo 'Exception when calling ScheduleApi->getRouteByType: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getRouteByType-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ScheduleApi;
+
+my $api_instance = WWW::SwaggerClient::ScheduleApi->new();
+my $type = type_example; # String | 
+
+eval { 
+    $api_instance->getRouteByType(type => $type);
+};
+if ($@) {
+    warn "Exception when calling ScheduleApi->getRouteByType: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getRouteByType-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ScheduleApi()
+type = type_example # String | 
+
+try: 
+    # Get routes by type
+    api_instance.get_route_by_type(type)
+except ApiException as e:
+    print("Exception when calling ScheduleApi->getRouteByType: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">type*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getRouteByType_type">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Routes by type fetched successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Route type is required </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch routes by type </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getRouteByType-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getRouteByType-500-schema">
+                                  <div id='responses-getRouteByType-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Failed to fetch routes by type",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getRouteByType-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getRouteByType-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getRouteByType-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Schedule-getRouteVariants">
+                      <article id="api-Schedule-getRouteVariants-0" data-group="User" data-name="getRouteVariants" data-version="0">
+                        <div class="pull-left">
+                          <h1>getRouteVariants</h1>
+                          <p>Get route variants</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/route/variants</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Schedule-getRouteVariants-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteVariants-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteVariants-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-getRouteVariants-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Schedule-getRouteVariants-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteVariants-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-getRouteVariants-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Schedule-getRouteVariants-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteVariants-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteVariants-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Schedule-getRouteVariants-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Schedule-getRouteVariants-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/route/variants?routeId="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ScheduleApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        
+        ScheduleApi apiInstance = new ScheduleApi();
+        String routeId = routeId_example; // String | 
+        try {
+            apiInstance.getRouteVariants(routeId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#getRouteVariants");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ScheduleApi;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        ScheduleApi apiInstance = new ScheduleApi();
+        String routeId = routeId_example; // String | 
+        try {
+            apiInstance.getRouteVariants(routeId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#getRouteVariants");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *routeId = routeId_example; // 
+
+ScheduleApi *apiInstance = [[ScheduleApi alloc] init];
+
+// Get route variants
+[apiInstance getRouteVariantsWith:routeId
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
+
+var api = new TheKeg.ScheduleApi()
+var routeId = routeId_example; // {{String}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.getRouteVariants(routeId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Schedule-getRouteVariants-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getRouteVariantsExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new ScheduleApi();
+            var routeId = routeId_example;  // String | 
+
+            try
+            {
+                // Get route variants
+                apiInstance.getRouteVariants(routeId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ScheduleApi.getRouteVariants: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiScheduleApi();
+$routeId = routeId_example; // String | 
+
+try {
+    $api_instance->getRouteVariants($routeId);
+} catch (Exception $e) {
+    echo 'Exception when calling ScheduleApi->getRouteVariants: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ScheduleApi;
+
+my $api_instance = WWW::SwaggerClient::ScheduleApi->new();
+my $routeId = routeId_example; # String | 
+
+eval { 
+    $api_instance->getRouteVariants(routeId => $routeId);
+};
+if ($@) {
+    warn "Exception when calling ScheduleApi->getRouteVariants: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getRouteVariants-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ScheduleApi()
+routeId = routeId_example # String | 
+
+try: 
+    # Get route variants
+    api_instance.get_route_variants(routeId)
+except ApiException as e:
+    print("Exception when calling ScheduleApi->getRouteVariants: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">routeId*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getRouteVariants_routeId">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Route variants fetched successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Route ID is required </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch route directions </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getRouteVariants-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getRouteVariants-500-schema">
+                                  <div id='responses-getRouteVariants-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Failed to fetch route directions",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getRouteVariants-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getRouteVariants-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getRouteVariants-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Schedule-getStopList">
+                      <article id="api-Schedule-getStopList-0" data-group="User" data-name="getStopList" data-version="0">
+                        <div class="pull-left">
+                          <h1>getStopList</h1>
+                          <p>Get stop list for a route</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/route/stops/list</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Schedule-getStopList-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Schedule-getStopList-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Schedule-getStopList-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-getStopList-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Schedule-getStopList-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Schedule-getStopList-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-getStopList-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Schedule-getStopList-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Schedule-getStopList-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Schedule-getStopList-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Schedule-getStopList-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Schedule-getStopList-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/route/stops/list?routeId=&firstStopId=&endStopId="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Schedule-getStopList-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ScheduleApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        
+        ScheduleApi apiInstance = new ScheduleApi();
+        String routeId = routeId_example; // String | 
+        String firstStopId = firstStopId_example; // String | 
+        String endStopId = endStopId_example; // String | 
+        try {
+            apiInstance.getStopList(routeId, firstStopId, endStopId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#getStopList");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Schedule-getStopList-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ScheduleApi;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        ScheduleApi apiInstance = new ScheduleApi();
+        String routeId = routeId_example; // String | 
+        String firstStopId = firstStopId_example; // String | 
+        String endStopId = endStopId_example; // String | 
+        try {
+            apiInstance.getStopList(routeId, firstStopId, endStopId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#getStopList");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Schedule-getStopList-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Schedule-getStopList-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">String *routeId = routeId_example; // 
+String *firstStopId = firstStopId_example; // 
+String *endStopId = endStopId_example; // 
+
+ScheduleApi *apiInstance = [[ScheduleApi alloc] init];
+
+// Get stop list for a route
+[apiInstance getStopListWith:routeId
+    firstStopId:firstStopId
+    endStopId:endStopId
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getStopList-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
+
+var api = new TheKeg.ScheduleApi()
+var routeId = routeId_example; // {{String}} 
+var firstStopId = firstStopId_example; // {{String}} 
+var endStopId = endStopId_example; // {{String}} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.getStopList(routeId, firstStopId, endStopId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Schedule-getStopList-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Schedule-getStopList-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class getStopListExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new ScheduleApi();
+            var routeId = routeId_example;  // String | 
+            var firstStopId = firstStopId_example;  // String | 
+            var endStopId = endStopId_example;  // String | 
+
+            try
+            {
+                // Get stop list for a route
+                apiInstance.getStopList(routeId, firstStopId, endStopId);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ScheduleApi.getStopList: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getStopList-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiScheduleApi();
+$routeId = routeId_example; // String | 
+$firstStopId = firstStopId_example; // String | 
+$endStopId = endStopId_example; // String | 
+
+try {
+    $api_instance->getStopList($routeId, $firstStopId, $endStopId);
+} catch (Exception $e) {
+    echo 'Exception when calling ScheduleApi->getStopList: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getStopList-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ScheduleApi;
+
+my $api_instance = WWW::SwaggerClient::ScheduleApi->new();
+my $routeId = routeId_example; # String | 
+my $firstStopId = firstStopId_example; # String | 
+my $endStopId = endStopId_example; # String | 
+
+eval { 
+    $api_instance->getStopList(routeId => $routeId, firstStopId => $firstStopId, endStopId => $endStopId);
+};
+if ($@) {
+    warn "Exception when calling ScheduleApi->getStopList: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-getStopList-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ScheduleApi()
+routeId = routeId_example # String | 
+firstStopId = firstStopId_example # String | 
+endStopId = endStopId_example # String | 
+
+try: 
+    # Get stop list for a route
+    api_instance.get_stop_list(routeId, firstStopId, endStopId)
+except ApiException as e:
+    print("Exception when calling ScheduleApi->getStopList: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">routeId*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getStopList_routeId">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">firstStopId*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getStopList_firstStopId">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">endStopId*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_getStopList_endStopId">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Stops for route fetched successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Missing required parameters </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch stops for route </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-getStopList-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-getStopList-500-schema">
+                                  <div id='responses-getStopList-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Failed to fetch stops for route",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-getStopList-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-getStopList-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-getStopList-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Schedule-updateTfiScheduleRoute">
+                      <article id="api-Schedule-updateTfiScheduleRoute-0" data-group="User" data-name="updateTfiScheduleRoute" data-version="0">
+                        <div class="pull-left">
+                          <h1>updateTfiScheduleRoute</h1>
+                          <p>Fetch and save GTFS data</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/schedule/update/gtfs/tfi</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Schedule-updateTfiScheduleRoute-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Schedule-updateTfiScheduleRoute-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Schedule-updateTfiScheduleRoute-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"http://0.0.0.0:8080/schedule/update/gtfs/tfi"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ScheduleApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        
+        ScheduleApi apiInstance = new ScheduleApi();
+        try {
+            apiInstance.updateTfiScheduleRoute();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#updateTfiScheduleRoute");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ScheduleApi;
+
+public class ScheduleApiExample {
+
+    public static void main(String[] args) {
+        ScheduleApi apiInstance = new ScheduleApi();
+        try {
+            apiInstance.updateTfiScheduleRoute();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ScheduleApi#updateTfiScheduleRoute");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+ScheduleApi *apiInstance = [[ScheduleApi alloc] init];
+
+// Fetch and save GTFS data
+[apiInstance updateTfiScheduleRouteWithCompletionHandler: 
+              ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var TheKeg = require('the_keg');
+
+var api = new TheKeg.ScheduleApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.updateTfiScheduleRoute(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class updateTfiScheduleRouteExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new ScheduleApi();
+
+            try
+            {
+                // Fetch and save GTFS data
+                apiInstance.updateTfiScheduleRoute();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ScheduleApi.updateTfiScheduleRoute: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiScheduleApi();
+
+try {
+    $api_instance->updateTfiScheduleRoute();
+} catch (Exception $e) {
+    echo 'Exception when calling ScheduleApi->updateTfiScheduleRoute: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ScheduleApi;
+
+my $api_instance = WWW::SwaggerClient::ScheduleApi->new();
+
+eval { 
+    $api_instance->updateTfiScheduleRoute();
+};
+if ($@) {
+    warn "Exception when calling ScheduleApi->updateTfiScheduleRoute: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Schedule-updateTfiScheduleRoute-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ScheduleApi()
+
+try: 
+    # Fetch and save GTFS data
+    api_instance.update_tfi_schedule_route()
+except ApiException as e:
+    print("Exception when calling ScheduleApi->updateTfiScheduleRoute: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - GTFS data fetched and saved successfully </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 500 - Failed to fetch GTFS data </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-updateTfiScheduleRoute-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-updateTfiScheduleRoute-500-schema">
+                                  <div id='responses-updateTfiScheduleRoute-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Failed to fetch GTFS data",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/ErrorResponse"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-updateTfiScheduleRoute-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-updateTfiScheduleRoute-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-updateTfiScheduleRoute-500-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

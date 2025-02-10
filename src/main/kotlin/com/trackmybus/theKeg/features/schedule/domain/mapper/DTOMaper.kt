@@ -6,6 +6,7 @@ import com.trackmybus.theKeg.features.schedule.data.remote.dto.CalendarDto
 import com.trackmybus.theKeg.features.schedule.data.remote.dto.FeedInfoDto
 import com.trackmybus.theKeg.features.schedule.data.remote.dto.GTFSDto
 import com.trackmybus.theKeg.features.schedule.data.remote.dto.RouteDto
+import com.trackmybus.theKeg.features.schedule.data.remote.dto.RouteStopInfoDto
 import com.trackmybus.theKeg.features.schedule.data.remote.dto.ShapeDto
 import com.trackmybus.theKeg.features.schedule.data.remote.dto.StopDto
 import com.trackmybus.theKeg.features.schedule.data.remote.dto.StopTimeDto
@@ -16,6 +17,7 @@ import com.trackmybus.theKeg.features.schedule.domain.model.CalendarDate
 import com.trackmybus.theKeg.features.schedule.domain.model.FeedInfo
 import com.trackmybus.theKeg.features.schedule.domain.model.GTFS
 import com.trackmybus.theKeg.features.schedule.domain.model.Route
+import com.trackmybus.theKeg.features.schedule.domain.model.RouteStopInfo
 import com.trackmybus.theKeg.features.schedule.domain.model.ScheduleAdjustmentType
 import com.trackmybus.theKeg.features.schedule.domain.model.Shape
 import com.trackmybus.theKeg.features.schedule.domain.model.Stop
@@ -73,13 +75,13 @@ fun List<CalendarDate>.toCalendarDateDto() = this.map { it.toDto() }
 fun CalendarDto.toModel() =
     Calendar(
         serviceId = this.serviceId ?: "0",
-        monday = this.monday == true,
-        tuesday = this.tuesday == true,
-        wednesday = this.wednesday == true,
-        thursday = this.thursday == true,
-        friday = this.friday == true,
-        saturday = this.saturday == true,
-        sunday = this.sunday == true,
+        monday = this.monday == 1,
+        tuesday = this.tuesday == 1,
+        wednesday = this.wednesday == 1,
+        thursday = this.thursday == 1,
+        friday = this.friday == 1,
+        saturday = this.saturday == 1,
+        sunday = this.sunday == 1,
         startDate = this.startDate?.toDateObject() ?: LocalDate(2025, 1, 1),
         endDate = this.endDate?.toDateObject() ?: LocalDate(2025, 1, 1),
     )
@@ -87,13 +89,13 @@ fun CalendarDto.toModel() =
 fun Calendar.toDto() =
     CalendarDto(
         serviceId = this.serviceId,
-        monday = this.monday,
-        tuesday = this.tuesday,
-        wednesday = this.wednesday,
-        thursday = this.thursday,
-        friday = this.friday,
-        saturday = this.saturday,
-        sunday = this.sunday,
+        monday = if (this.monday == true) 1 else 0,
+        tuesday = if (this.tuesday == true) 1 else 0,
+        wednesday = if (this.wednesday == true) 1 else 0,
+        thursday = if (this.thursday == true) 1 else 0,
+        friday = if (this.friday == true) 1 else 0,
+        saturday = if (this.saturday == true) 1 else 0,
+        sunday = if (this.sunday == true) 1 else 0,
         startDate = this.startDate.toIntDate(),
         endDate = this.endDate.toIntDate(),
     )
@@ -301,3 +303,26 @@ fun GTFS.toDto() =
         stopTimesDto = this.stopTimes.toStopTimeDto(),
         tripsDto = this.trips.toTripDto(),
     )
+
+/** Route Stop Info */
+fun RouteStopInfoDto.toModel() =
+    RouteStopInfo(
+        firstStopId = this.firstStopId,
+        firstStopName = this.firstStopName,
+        lastStopId = this.lastStopId,
+        lastStopName = this.lastStopName,
+        directionId = this.directionId,
+    )
+
+fun RouteStopInfo.toDto() =
+    RouteStopInfoDto(
+        firstStopId = this.firstStopId,
+        firstStopName = this.firstStopName,
+        lastStopId = this.lastStopId,
+        lastStopName = this.lastStopName,
+        directionId = this.directionId,
+    )
+
+fun List<RouteStopInfoDto>.toRouteStopInfoModel() = this.map { it.toModel() }
+
+fun List<RouteStopInfo>.toRouteStopInfoDto() = this.map { it.toDto() }

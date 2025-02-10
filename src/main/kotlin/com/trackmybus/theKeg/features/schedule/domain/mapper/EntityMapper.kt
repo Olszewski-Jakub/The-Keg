@@ -198,7 +198,7 @@ fun TripEntity.toModel() =
         tripShortName = this.tripShortName ?: "",
         directionId = this.directionId ?: 0,
         blockId = this.blockId ?: "",
-        shapeId = this.shapeId,
+        shapeId = this.shapeId ?: "",
     )
 
 fun Trip.toEntity() =

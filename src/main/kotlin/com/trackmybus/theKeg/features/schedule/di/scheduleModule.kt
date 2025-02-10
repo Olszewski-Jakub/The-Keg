@@ -8,4 +8,5 @@ val scheduleModules =
         serviceModules,
         repositoryModule,
         scheduleDatabaseModule,
+        useCaseModule,
     )

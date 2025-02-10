@@ -6,18 +6,133 @@ info:
 servers:
   - url: "http://0.0.0.0:8080"
 paths:
-  /:
+  /schedule/update/gtfs/tfi:
     get:
-      description: "Hello World!"
+      summary: Fetch and save GTFS data
+      operationId: updateTfiScheduleRoute
+      tags:
+        - Schedule
       responses:
-        "200":
-          description: "OK"
+        '200':
+          description: GTFS data fetched and saved successfully
+        '500':
+          description: Failed to fetch GTFS data
           content:
-            text/plain:
+            application/json:
               schema:
-                type: "string"
-              examples:
-                Example#1:
-                  value: "Hello World!"
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/route/variants:
+    get:
+      summary: Get route variants
+      operationId: getRouteVariants
+      tags:
+        - Schedule
+        - Routes
+      parameters:
+        - name: routeId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Route variants fetched successfully
+        '400':
+          description: Route ID is required
+        '500':
+          description: Failed to fetch route directions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/route/stops/list:
+    get:
+      summary: Get stop list for a route
+      operationId: getStopList
+      tags:
+        - Schedule
+        - Routes
+      parameters:
+        - name: routeId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: firstStopId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: endStopId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Stops for route fetched successfully
+        '400':
+          description: Missing required parameters
+        '500':
+          description: Failed to fetch stops for route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/route/byType:
+    get:
+      summary: Get routes by type
+      operationId: getRouteByType
+      tags:
+        - Schedule
+        - Routes
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ TRAM, UNDERGROUND, RAIL, BUS ]
+      responses:
+        '200':
+          description: Routes by type fetched successfully
+        '400':
+          description: Route type is required
+        '500':
+          description: Failed to fetch routes by type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/route/all:
+    get:
+      summary: Get all routes
+      operationId: getAllRoutes
+      tags:
+        - Schedule
+        - Routes
+      responses:
+        '200':
+          description: All routes fetched successfully
+        '500':
+          description: Failed to fetch all routes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
 components:
-  schemas: { }
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        message:
+          type: string
+        details:
+          type: string

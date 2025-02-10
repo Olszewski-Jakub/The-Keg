@@ -20,6 +20,8 @@ interface RouteDao {
      */
     suspend fun getRouteById(id: String): Result<RouteEntity?>
 
+    suspend fun getRoutesByType(type: Int): Result<List<RouteEntity>>
+
     /**
      * Adds a new route to the local database.
      * @param route The [RouteEntity] object to add.

@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class DatabaseFactoryForUnitTest(
     private val scheduleSchemaInitializer: ScheduleSchemaInitializer,
 ) : DatabaseFactory {
-    private lateinit var connectionPool: HikariDataSource
+    internal lateinit var connectionPool: HikariDataSource
 
     override lateinit var database: Database
 

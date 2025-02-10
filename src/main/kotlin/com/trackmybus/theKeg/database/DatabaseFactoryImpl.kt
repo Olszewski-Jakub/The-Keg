@@ -16,7 +16,6 @@ class DatabaseFactoryImpl(
     private val scheduleSchemaInitializer: ScheduleSchemaInitializer,
 ) : DatabaseFactory {
     private val postgresConfig = appConfig.postgresConfig
-    private val isProd = appConfig.serverConfig.isProd
     override lateinit var database: Database
 
     override fun connect() {
@@ -24,12 +23,19 @@ class DatabaseFactoryImpl(
             val connectionPool =
                 createHikariDataSource(
                     url =
-                        databaseUrlBuilder(
-                            jdbcUrl = postgresConfig.jdbcUrl,
-                            defaultDatabase = postgresConfig.database,
-                            user = postgresConfig.user,
-                            password = postgresConfig.password,
-                        ),
+                        if (postgresConfig.user.isNotEmpty() &&
+                            postgresConfig.password.isNotEmpty() &&
+                            postgresConfig.database.isNotEmpty()
+                        ) {
+                            databaseUrlBuilder(
+                                jdbcUrl = postgresConfig.jdbcUrl,
+                                defaultDatabase = postgresConfig.database,
+                                user = postgresConfig.user,
+                                password = postgresConfig.password,
+                            )
+                        } else {
+                            postgresConfig.jdbcUrl
+                        },
                     driver = postgresConfig.driverClass,
                     maxPoolSize = postgresConfig.maxPoolSize,
                     autoCommit = postgresConfig.autoCommit,

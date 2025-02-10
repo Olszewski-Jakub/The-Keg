@@ -3,6 +3,7 @@ package com.trackmybus.theKeg.features.schedule.domain.repository.route
 import com.trackmybus.theKeg.features.schedule.data.local.dao.route.RouteDao
 import com.trackmybus.theKeg.features.schedule.domain.mapper.toModel
 import com.trackmybus.theKeg.features.schedule.domain.model.Route
+import com.trackmybus.theKeg.features.schedule.resource.RouteType
 import com.trackmybus.theKeg.infrastructure.mappers.ResultMapper.mapResult
 import io.ktor.util.logging.Logger
 
@@ -31,6 +32,15 @@ class RouteRepositoryImpl(
                 result.onFailure { logger.error("Error fetching route with id: $id", it) }
             }
     }
+
+    override suspend fun getRoutesByType(type: RouteType): Result<List<Route>> =
+        routeDao
+            .getRoutesByType(type.ordinal)
+            .mapResult { it.map { routeEntity -> routeEntity.toModel() } }
+            .also { result ->
+                result.onSuccess { logger.info("Successfully fetched routes by type: $type") }
+                result.onFailure { logger.error("Error fetching routes by type: $type", it) }
+            }
 
     override suspend fun add(calendar: Route): Result<Route> {
         logger.info("Adding route: ${calendar.routeId}")
