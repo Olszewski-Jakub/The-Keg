@@ -6,8 +6,8 @@ info:
 servers:
   - url: "http://0.0.0.0:8003/the-keg/v1"
 paths:
-  /schedule/update/gtfs/tfi:
-    get:
+  /gtfs/update:
+    put:
       summary: Fetch and save GTFS data
       operationId: updateTfiScheduleRoute
       tags:
@@ -22,7 +22,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /schedule/route/variants:
+  /route/variants:
     get:
       summary: Get route variants
       operationId: getRouteVariants
@@ -46,7 +46,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /schedule/stops/list:
+  /stops/list:
     get:
       summary: Get stop list for a route
       operationId: getStopList
@@ -80,7 +80,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /schedule/route/byType:
+  /route/byType:
     get:
       summary: Get routes by type
       operationId: getRouteByType
@@ -105,7 +105,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /schedule/route/all:
+  /route/all:
     get:
       summary: Get all routes
       operationId: getAllRoutes
@@ -120,7 +120,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /schedule/stops/departureTimes:
+
+  /stops/departureTimes:
     get:
       summary: Get departure times from a specific stop
       operationId: getDepartureTimesFromStop
@@ -155,7 +156,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /schedule/route/trips:
+  /route/trips:
     get:
       summary: Get stops for a specific trip
       operationId: getStopsForTrip
@@ -179,7 +180,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /schedule/stops/passingRoutes:
+  /stops/passingRoutes:
     get:
       summary: Get routes passing through a specific stop
       operationId: getRoutesPassingThroughStop
@@ -203,7 +204,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /schedule/trip/shapes:
+  /trip/shapes:
     get:
       summary: Get shapes for a specific trip
       operationId: getShapesForTrip
@@ -222,6 +223,29 @@ paths:
           description: Trip ID is required
         '500':
           description: Failed to fetch shapes for trip
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /trip:
+    get:
+      summary: Get stops for a specific trip
+      operationId: getStopsForTrip
+      tags:
+        - Trips
+      parameters:
+        - name: tripId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Stops for trip fetched successfully
+        '400':
+          description: Trip ID is required
+        '500':
+          description: Failed to fetch stops for trip
           content:
             application/json:
               schema:

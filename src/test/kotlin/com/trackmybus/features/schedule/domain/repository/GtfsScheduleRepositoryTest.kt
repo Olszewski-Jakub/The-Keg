@@ -1,7 +1,7 @@
-package com.trackmybus.features.v1.schedule.domain.repository
+package com.trackmybus.features.v1.domain.repository
 
 import com.trackmybus.di.configureKoinUnitTest
-import com.trackmybus.theKeg.features.v1.schedule.domain.repository.gtfs.GtfsScheduleRepository
+import com.trackmybus.theKeg.features.v1.domain.repository.gtfs.GtfsScheduleRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.After

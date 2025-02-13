@@ -1,13 +1,13 @@
-package com.trackmybus.features.v1.schedule.domain.repository
+package com.trackmybus.features.v1.domain.repository
 
 import com.trackmybus.di.configureKoinUnitTest
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.v1.schedule.domain.model.*
-import com.trackmybus.theKeg.features.v1.schedule.domain.repository.agency.AgencyRepository
-import com.trackmybus.theKeg.features.v1.schedule.domain.repository.calendar.CalendarRepository
-import com.trackmybus.theKeg.features.v1.schedule.domain.repository.route.RouteRepository
-import com.trackmybus.theKeg.features.v1.schedule.domain.repository.shape.ShapeRepository
-import com.trackmybus.theKeg.features.v1.schedule.domain.repository.trip.TripRepository
+import com.trackmybus.theKeg.features.v1.domain.model.*
+import com.trackmybus.theKeg.features.v1.domain.repository.agency.AgencyRepository
+import com.trackmybus.theKeg.features.v1.domain.repository.calendar.CalendarRepository
+import com.trackmybus.theKeg.features.v1.domain.repository.route.RouteRepository
+import com.trackmybus.theKeg.features.v1.domain.repository.shape.ShapeRepository
+import com.trackmybus.theKeg.features.v1.domain.repository.trip.TripRepository
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDate
 import org.junit.After

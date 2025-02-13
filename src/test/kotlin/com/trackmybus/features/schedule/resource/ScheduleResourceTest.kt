@@ -2,7 +2,7 @@ package com.trackmybus.features.schedule.resource
 
 import com.trackmybus.di.configureKoinUnitTest
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.v1.schedule.resource.scheduleRoutes
+import com.trackmybus.theKeg.features.v1.resource.scheduleRoutes
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode

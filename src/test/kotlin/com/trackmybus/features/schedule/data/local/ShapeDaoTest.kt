@@ -1,10 +1,10 @@
-package com.trackmybus.features.v1.schedule.data.local
+package com.trackmybus.features.v1.data.local
 
 import com.trackmybus.di.configureKoinUnitTest
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.v1.schedule.data.local.dao.shape.ShapeDao
-import com.trackmybus.theKeg.features.v1.schedule.domain.mapper.toModel
-import com.trackmybus.theKeg.features.v1.schedule.domain.model.Shape
+import com.trackmybus.theKeg.features.v1.data.local.dao.shape.ShapeDao
+import com.trackmybus.theKeg.features.v1.domain.mapper.toModel
+import com.trackmybus.theKeg.features.v1.domain.model.Shape
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals
