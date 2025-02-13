@@ -156,7 +156,7 @@ class GtfsQueryRepositoryTest : KoinTest {
             val stops = result.getOrNull()
             assertEquals(5, stops?.size)
         }
-    
+
     @Test
     fun getStopsForTrip_returnsCorrectStops() =
         runBlocking {

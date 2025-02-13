@@ -20,11 +20,11 @@ import com.trackmybus.theKeg.features.v1.schedule.domain.repository.agency.Agenc
 import com.trackmybus.theKeg.features.v1.schedule.domain.repository.calendar.CalendarRepository
 import com.trackmybus.theKeg.features.v1.schedule.domain.repository.calendarDate.CalendarDateRepository
 import com.trackmybus.theKeg.features.v1.schedule.domain.repository.gtfs.GtfsScheduleRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.gtfsQueryRepository.GtfsQueryRepository
 import com.trackmybus.theKeg.features.v1.schedule.domain.repository.route.RouteRepository
 import com.trackmybus.theKeg.features.v1.schedule.domain.repository.shape.ShapeRepository
 import com.trackmybus.theKeg.features.v1.schedule.domain.repository.stop.StopRepository
 import com.trackmybus.theKeg.features.v1.schedule.domain.repository.stopTime.StopTimeRepository
-import com.trackmybus.theKeg.features.v1.schedule.domain.repository.gtfsQueryRepository.GtfsQueryRepository
 import com.trackmybus.theKeg.features.v1.schedule.domain.repository.trip.TripRepository
 import com.trackmybus.theKeg.features.v1.schedule.resource.RouteType
 import com.trackmybus.theKeg.infrastructure.mappers.ResultMapper.mapResult

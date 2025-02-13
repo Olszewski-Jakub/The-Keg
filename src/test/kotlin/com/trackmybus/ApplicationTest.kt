@@ -4,11 +4,8 @@ import com.trackmybus.di.configureKoinUnitTest
 import com.trackmybus.theKeg.config.configureRouting
 import com.trackmybus.theKeg.config.setupConfig
 import com.trackmybus.theKeg.configureDatabases
-import com.trackmybus.theKeg.configureSerialization
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.module
 import io.ktor.client.request.get
-import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.config.MapApplicationConfig
 import io.ktor.server.testing.testApplication
@@ -18,7 +15,6 @@ import org.junit.Before
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.get
-import org.koin.test.inject
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -66,15 +62,17 @@ class ApplicationTest : KoinTest {
     }
 
     @Test
-    fun databaseConnectionEstablished() = testApplication {
-        application { configureDatabases() }
-        assertTrue(databaseFactory.database.url.isNotEmpty())
-    }
+    fun databaseConnectionEstablished() =
+        testApplication {
+            application { configureDatabases() }
+            assertTrue(databaseFactory.database.url.isNotEmpty())
+        }
 
     @Test
-    fun routingConfiguredCorrectly() = testApplication {
-        application { configureRouting() }
-        val response = client.get("/")
-        assertEquals(HttpStatusCode.OK, response.status)
-    }
+    fun routingConfiguredCorrectly() =
+        testApplication {
+            application { configureRouting() }
+            val response = client.get("/")
+            assertEquals(HttpStatusCode.OK, response.status)
+        }
 }
