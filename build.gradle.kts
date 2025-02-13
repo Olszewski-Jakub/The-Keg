@@ -9,6 +9,7 @@ val postgresVersion: String = project.findProperty("postgres_version") as String
 val csvSerializationVersion: String = project.findProperty("csv_serialization_version") as String
 val exposedVersion: String = project.findProperty("exposed_version") as String
 val hikaricpVersion: String = project.findProperty("hikaricp_version") as String
+val mockkVersion: String = project.findProperty("mockk_version") as String
 
 plugins {
     kotlin("jvm") version "2.1.0"
@@ -18,7 +19,6 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.9.1"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
     id("com.github.ben-manes.versions") version "0.52.0"
-    id("io.gitlab.arturbosch.detekt") version "1.23.7"
 }
 
 group = "com.trackmybus.theKeg"
@@ -71,13 +71,15 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
     // Test dependencies
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
+    testImplementation("io.mockk:mockk:$mockkVersion")
 }
 
 ktlint {
     verbose.set(true)
     outputToConsole.set(true)
     coloredOutput.set(true)
-    baseline.set(file("config/ktlint/baseline.xml"))
+//    ignoreFailures.set(true)
+//    baseline.set(file("config/ktlint/baseline.xml"))
     reporters {
         reporter(ReporterType.CHECKSTYLE)
         reporter(ReporterType.JSON)

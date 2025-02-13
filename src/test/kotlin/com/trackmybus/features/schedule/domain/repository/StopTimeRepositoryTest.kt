@@ -1,15 +1,15 @@
-package com.trackmybus.features.schedule.domain.repository
+package com.trackmybus.features.v1.schedule.domain.repository
 
 import com.trackmybus.di.configureKoinUnitTest
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.schedule.domain.model.*
-import com.trackmybus.theKeg.features.schedule.domain.repository.agency.AgencyRepository
-import com.trackmybus.theKeg.features.schedule.domain.repository.calendar.CalendarRepository
-import com.trackmybus.theKeg.features.schedule.domain.repository.route.RouteRepository
-import com.trackmybus.theKeg.features.schedule.domain.repository.shape.ShapeRepository
-import com.trackmybus.theKeg.features.schedule.domain.repository.stop.StopRepository
-import com.trackmybus.theKeg.features.schedule.domain.repository.stopTime.StopTimeRepository
-import com.trackmybus.theKeg.features.schedule.domain.repository.trip.TripRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.model.*
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.agency.AgencyRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.calendar.CalendarRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.route.RouteRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.shape.ShapeRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.stop.StopRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.stopTime.StopTimeRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.trip.TripRepository
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime

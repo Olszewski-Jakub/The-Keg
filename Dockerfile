@@ -27,10 +27,10 @@ WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 
 # Expose the application port
-EXPOSE 8081
+EXPOSE 9000
 
 # Set environment variables for the application (optional)
-ENV PORT=8081
+ENV PORT=9000
 
 # Define the entrypoint to run the Ktor server
 CMD ["java", "-jar", "/app/app.jar"]

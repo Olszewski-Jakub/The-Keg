@@ -1,20 +1,18 @@
-package com.trackmybus.features.schedule.domain.repository
+package com.trackmybus.features.v1.schedule.domain.repository
 
 import com.trackmybus.di.configureKoinUnitTest
-import com.trackmybus.theKeg.features.schedule.domain.repository.gtfs.GtfsScheduleRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.gtfs.GtfsScheduleRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertFalse
 import org.junit.Before
-import org.junit.Ignore
 import org.junit.Test
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.get
 import kotlin.test.assertNotNull
 
-@Ignore
 class GtfsScheduleRepositoryTest : KoinTest {
     private lateinit var gtfsScheduleService: GtfsScheduleRepository
 

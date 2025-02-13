@@ -6,6 +6,7 @@ import com.trackmybus.database.DatabaseFactoryForServerTest
 import com.trackmybus.database.DatabaseFactoryForUnitTest
 import com.trackmybus.theKeg.config.AppConfig
 import com.trackmybus.theKeg.config.GtfsConfig
+import com.trackmybus.theKeg.config.ServerConfig
 import com.trackmybus.theKeg.database.DatabaseFactory
 import org.koin.dsl.module
 
@@ -16,9 +17,7 @@ val testConfigModulesForUnitTest =
                 gtfsConfig =
                     GtfsConfig(
                         url = "https://www.transportforireland.ie/transitData/Data/GTFS_Realtime.zip",
-//            url = "https://github.com/google/transit/blob/master/gtfs/spec/en/examples/sample-feed-1.zip?raw=true",
                         gtfsFile = "GTFS_Realtime.zip",
-//            gtfsFile = "sample-feed-1.zip",
                         agencyFile = "agency.txt",
                         calendarFile = "calendar.txt",
                         calendarDatesFile = "calendar_dates.txt",
@@ -30,6 +29,7 @@ val testConfigModulesForUnitTest =
                         feedInfoFile = "feed_info.txt",
                         outputDir = "temp/gtfs",
                     )
+                serverConfig = ServerConfig(isProd = false)
             }
         }
         single<DatabaseFactory> { DatabaseFactoryForUnitTest(get()) }

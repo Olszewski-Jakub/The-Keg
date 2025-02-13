@@ -1,23 +1,239 @@
 openapi: "3.0.3"
 info:
   title: "The Keg"
-  description: "Application API"
+  description: "Application to fetch and display public transport schedules"
   version: "1.0.0"
 servers:
-  - url: "http://0.0.0.0:8080"
+  - url: "http://0.0.0.0:8003/the-keg/v1"
 paths:
-  /:
+  /schedule/update/gtfs/tfi:
     get:
-      description: "Hello World!"
+      summary: Fetch and save GTFS data
+      operationId: updateTfiScheduleRoute
+      tags:
+
       responses:
-        "200":
-          description: "OK"
+        '200':
+          description: GTFS data fetched and saved successfully
+        '500':
+          description: Failed to fetch GTFS data
           content:
-            text/plain:
+            application/json:
               schema:
-                type: "string"
-              examples:
-                Example#1:
-                  value: "Hello World!"
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/route/variants:
+    get:
+      summary: Get route variants
+      operationId: getRouteVariants
+      tags:
+        - Routes
+      parameters:
+        - name: routeId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Route variants fetched successfully
+        '400':
+          description: Route ID is required
+        '500':
+          description: Failed to fetch route directions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/stops/list:
+    get:
+      summary: Get stop list for a route
+      operationId: getStopList
+      tags:
+        - Stops
+      parameters:
+        - name: routeId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: firstStopId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: endStopId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Stops for route fetched successfully
+        '400':
+          description: Missing required parameters
+        '500':
+          description: Failed to fetch stops for route
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/route/byType:
+    get:
+      summary: Get routes by type
+      operationId: getRouteByType
+      tags:
+        - Routes
+      parameters:
+        - name: type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [ TRAM, UNDERGROUND, RAIL, BUS ]
+      responses:
+        '200':
+          description: Routes by type fetched successfully
+        '400':
+          description: Route type is required
+        '500':
+          description: Failed to fetch routes by type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/route/all:
+    get:
+      summary: Get all routes
+      operationId: getAllRoutes
+      tags:
+        - Routes
+      responses:
+        '200':
+          description: All routes fetched successfully
+        '500':
+          description: Failed to fetch all routes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /schedule/stops/departureTimes:
+    get:
+      summary: Get departure times from a specific stop
+      operationId: getDepartureTimesFromStop
+      tags:
+        - Stops
+      parameters:
+        - name: stopId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: routeId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Departure times fetched successfully
+        '400':
+          description: Missing required parameters
+        '500':
+          description: Failed to fetch departure times
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/route/trips:
+    get:
+      summary: Get stops for a specific trip
+      operationId: getStopsForTrip
+      tags:
+        - Routes
+      parameters:
+        - name: tripId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Stops for trip fetched successfully
+        '400':
+          description: Trip ID is required
+        '500':
+          description: Failed to fetch stops for trip
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/stops/passingRoutes:
+    get:
+      summary: Get routes passing through a specific stop
+      operationId: getRoutesPassingThroughStop
+      tags:
+        - Stops
+      parameters:
+        - name: stopId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Routes passing through stop fetched successfully
+        '400':
+          description: Stop ID is required
+        '500':
+          description: Failed to fetch routes passing through stop
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /schedule/trip/shapes:
+    get:
+      summary: Get shapes for a specific trip
+      operationId: getShapesForTrip
+      tags:
+        - Trips
+      parameters:
+        - name: tripId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Shapes for trip fetched successfully
+        '400':
+          description: Trip ID is required
+        '500':
+          description: Failed to fetch shapes for trip
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
-  schemas: { }
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+        message:
+          type: string
+        details:
+          type: string

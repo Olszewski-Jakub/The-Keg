@@ -17,7 +17,7 @@ services:
       dockerfile: Dockerfile
     container_name: the-keg
     environment:
-      PORT: 8081
+      PORT: 9000
       JDBC_URL: jdbc:postgresql://localhost:5432
       DB_NAME: TrackMyBus
       DB_USER: postgres
@@ -27,7 +27,7 @@ services:
     depends_on:
       - db
     ports:
-      - "8081:8081"
+      - "9000:9000"
 
 volumes:
   postgres_data:

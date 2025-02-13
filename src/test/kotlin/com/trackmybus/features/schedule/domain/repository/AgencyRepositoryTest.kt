@@ -1,9 +1,9 @@
-package com.trackmybus.features.schedule.domain.repository
+package com.trackmybus.features.v1.schedule.domain.repository
 
 import com.trackmybus.di.configureKoinUnitTest
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.schedule.domain.model.Agency
-import com.trackmybus.theKeg.features.schedule.domain.repository.agency.AgencyRepository
+import com.trackmybus.theKeg.features.v1.schedule.domain.model.Agency
+import com.trackmybus.theKeg.features.v1.schedule.domain.repository.agency.AgencyRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals

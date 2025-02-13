@@ -1,7 +1,7 @@
 package com.trackmybus.database
 
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.schedule.data.local.ScheduleSchemaInitializer
+import com.trackmybus.theKeg.features.v1.schedule.data.local.ScheduleSchemaInitializer
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +12,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class DatabaseFactoryForUnitTest(
     private val scheduleSchemaInitializer: ScheduleSchemaInitializer,
 ) : DatabaseFactory {
-    private lateinit var connectionPool: HikariDataSource
+    internal lateinit var connectionPool: HikariDataSource
 
     override lateinit var database: Database
 

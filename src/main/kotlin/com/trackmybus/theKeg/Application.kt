@@ -2,12 +2,14 @@ package com.trackmybus.theKeg
 
 import com.trackmybus.theKeg.config.configureHTTP
 import com.trackmybus.theKeg.config.configureMonitoring
+import com.trackmybus.theKeg.config.configureRouting
 import com.trackmybus.theKeg.config.setupConfig
 import com.trackmybus.theKeg.database.DatabaseFactory
 import com.trackmybus.theKeg.di.configureKoin
-import io.ktor.serialization.kotlinx.json.*
-import io.ktor.server.application.*
-import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.serialization.kotlinx.json.json
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
+import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
 import kotlinx.serialization.json.Json
 import org.koin.ktor.ext.inject
 
@@ -23,6 +25,7 @@ fun Application.module() {
     setupConfig()
     configureDatabases()
     configureSerialization()
+    configureRouting()
 }
 
 fun Application.configureSerialization() {
