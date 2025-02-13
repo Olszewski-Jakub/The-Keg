@@ -2,7 +2,7 @@ package com.trackmybus.database
 
 import com.trackmybus.theKeg.config.AppConfig
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.schedule.data.local.ScheduleSchemaInitializer
+import com.trackmybus.theKeg.features.v1.schedule.data.local.ScheduleSchemaInitializer
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers

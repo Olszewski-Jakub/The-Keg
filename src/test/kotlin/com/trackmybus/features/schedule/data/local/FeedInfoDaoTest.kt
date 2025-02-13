@@ -1,10 +1,10 @@
-package com.trackmybus.features.schedule.data.local
+package com.trackmybus.features.v1.schedule.data.local
 
 import com.trackmybus.di.configureKoinUnitTest
 import com.trackmybus.theKeg.database.DatabaseFactory
-import com.trackmybus.theKeg.features.schedule.data.local.dao.feedInfo.FeedInfoDao
-import com.trackmybus.theKeg.features.schedule.domain.mapper.toModel
-import com.trackmybus.theKeg.features.schedule.domain.model.FeedInfo
+import com.trackmybus.theKeg.features.v1.schedule.data.local.dao.feedInfo.FeedInfoDao
+import com.trackmybus.theKeg.features.v1.schedule.domain.mapper.toModel
+import com.trackmybus.theKeg.features.v1.schedule.domain.model.FeedInfo
 import kotlinx.coroutines.runBlocking
 import kotlinx.datetime.LocalDate
 import org.junit.After

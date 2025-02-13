@@ -3,7 +3,7 @@ package com.trackmybus.di
 import com.trackmybus.theKeg.di.csvModule
 import com.trackmybus.theKeg.di.databaseModule
 import com.trackmybus.theKeg.di.loggerModule
-import com.trackmybus.theKeg.features.schedule.di.scheduleModules
+import com.trackmybus.theKeg.features.v1.schedule.di.scheduleModules
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import org.koin.core.context.startKoin
