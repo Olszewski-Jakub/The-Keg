@@ -11,7 +11,7 @@ paths:
       summary: Fetch and save GTFS data
       operationId: updateTfiScheduleRoute
       tags:
-
+        - GTFS
       responses:
         '200':
           description: GTFS data fetched and saved successfully
